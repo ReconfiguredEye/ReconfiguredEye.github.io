@@ -10,9 +10,9 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/starter-template/">
     
 
-<link href="../../css/bootstrap.css" rel="stylesheet">
-<link href="../../css/blog.css" rel="stylesheet">
-<link href="../../css/bootstrap.yeti.css" rel="stylesheet">
+<link href="../../../css/bootstrap.css" rel="stylesheet">
+<link href="../../../css/blog.css" rel="stylesheet">
+<link href="../../../css/bootstrap.yeti.css" rel="stylesheet">
 
 
 <style>
@@ -76,7 +76,7 @@
 
 <div class="col-lg-8 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-    <a href="../../index.html" class="d-flex align-items-center text-body-emphasis text-decoration-none">
+    <a href="../../../index.html" class="d-flex align-items-center text-body-emphasis text-decoration-none">
       <h4>Colby Jennings</h4>
     </a>
   </header>
@@ -85,14 +85,53 @@
 
     <div class="row g-5">
       <div class="col-md-8">
-        <h3 class="text-body-emphasis"><a href="art210.html">ART 210</a> | creative coding</h3>
+        <h3 class="text-body-emphasis"><a href="../art210.html">ART 210</a> | creative coding - resources + reference</h3>
         <hr>
       </br>
       <article>
-        <h5>week 000 (August 21 - 25) announcements</h5>
-        <p>
-          put week 000's announcements here...
-        </p>
+        <h5>Geometric Progression</h5>
+    </br>
+        <md-block>
+
+            ##### Prompt
+            Generate a set of parallel lines or curves, spaced at narrow intervals. Overlap two copies of your line set, differing by a small rotation, to create a moire pattern. Place some dimension of variability, such as the line separation or rotation angle, under interactive control.
+            
+            ##### Response
+            You can create a moiré pattern by drawing two sets of parallel lines, where the second set is rotated by a small angle relative to the first set. To control the rotation angle interactively, you can use a slider. Here is a simple p5.js sketch that implements this:
+
+```javascript
+let angleSlider; // Slider to control the rotation angle
+
+function setup() {
+  createCanvas(800, 800);
+  angleSlider = createSlider(0, PI/2, PI/8, 0.01); // Slider ranges from 0 to PI/2 with a default value of PI/8 and a step size of 0.01
+  angleSlider.position(10, 10);
+}
+
+function draw() {
+  background(220);
+  
+  let angle = angleSlider.value();
+  
+  translate(width/2, height/2); // Center the drawing
+  
+  for(let i = -width/2; i <= width/2; i += 10) { // Draw the first set of lines
+    line(i, -height/2, i, height/2);
+  }
+  
+  rotate(angle); // Rotate the coordinate system for the second set of lines
+  
+  for(let i = -width/2; i <= width/2; i += 10) { // Draw the second set of lines
+    line(i, -height/2, i, height/2);
+  }
+}
+```
+
+In this script, `setup()` creates a canvas and a slider for controlling the rotation angle, and `draw()` draws two sets of parallel lines where the second set is rotated by the value of the slider relative to the first set. The rotation is performed around the center of the canvas, so the moiré pattern appears centered.
+
+You can adjust the parameters as needed, such as the spacing between the lines (the step size in the for loops), the range and step size of the slider, and the size and position of the canvas and the slider.
+
+        </md-block>
       </br>
       <hr>
       </article>
@@ -105,13 +144,13 @@
         <p>Convenient links that you'll use often.</p>
         <ul class="list-unstyled ps-0">
           <li>
-            <a href="art210.syllabus.html">Syllabus</a>
+            <a href="../art210.syllabus.html">Syllabus</a>
           </li>
           <li>
-            <a href="art210.schedule.html">Schedule</a>
+            <a href="../art210.schedule.html">Schedule</a>
           </li>
           <li>
-            <a href="art210.resources.html">Resources + Reference</a>
+            <a href="../art210.resources.html">Resources + Reference</a>
           </li>
           <li>
             <a href="https://p5js.org/" target="_blank" rel="noopener noreferrer">P5.js</a>
@@ -133,7 +172,7 @@
     <a href="https://media.giphy.com/media/VowM9lLlmH2lW/giphy.gif" target="_blank" rel="noopener noreferrer">Wu-Tang is for the Children.</a>
   </footer>
 </div>
-<script src="../../js/bootstrap.bundle.min.js"></script>
+<script src="../../../js/bootstrap.bundle.min.js"></script>
 <script type="module" src="https://md-block.verou.me/md-block.js"></script>
 
     </body>
