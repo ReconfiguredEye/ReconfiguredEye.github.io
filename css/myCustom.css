@@ -2,4 +2,14 @@
 
 /* Custom CSS Styles */
 
-body {font-family: 'Roboto','Helvetica Neue',sans-serif; font-size: 18px;font-weight:300;color: #111;}
+body {
+    font-family: 'Roboto','Helvetica Neue',sans-serif; 
+    font-size: 18px;
+    font-weight:300;
+    color: #efefef;
+    background-color: #101010;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #efefef;
+}
