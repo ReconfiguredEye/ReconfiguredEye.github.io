@@ -12,6 +12,17 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     color: #efefef;
+    padding-bottom: 10px;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    color: #efefef;
+    text-decoration: none;
+}
+
+figure {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 figcaption {
@@ -23,4 +34,22 @@ canvas {
     top: 0;
     left: 0;
     z-index: -1;
+}
+
+ul li {
+    padding-bottom: 10px;
+}
+
+hr {
+    padding-bottom: 10px;
+}
+
+footer {
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+footer a {
+    color: #efefef;
+    text-decoration: none;
 }
