@@ -75,7 +75,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 figure {
     padding-bottom: 20px;
     margin-bottom: 20px;
-    border-bottom: 1px solid #efefef;
+    border-bottom: 1px solid rgba(239, 239, 239, .25);
 }
 
 figcaption {

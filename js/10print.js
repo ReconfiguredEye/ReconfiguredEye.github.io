@@ -3,7 +3,7 @@ let spacing = 20; // Define the spacing between lines
 function setup() {
   createCanvas(windowWidth, windowHeight); // Make the canvas fill the browser window
   background(12); // Set a light gray background
-  stroke(22, 20, 8); // Set the line color to a darker gray
+  stroke(20, 18, 8); // Set the line color to a darker gray
   strokeWeight(3); // Set the line thickness
   noLoop(); // Run the drawing once without looping
 }
