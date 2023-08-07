@@ -16,9 +16,9 @@
 
 
 <body>
+<div class="canvasContainer">
 
-
-<div class="col-lg-8 mx-auto p-4 py-md-5">
+<div class=" col-lg-10 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
     <a href="../../../index.html" class="d-flex align-items-center text-body-emphasis text-decoration-none">
       <h4>colby jennings</h4>
@@ -36,21 +36,700 @@
           <md-block>
             **August 29 - Class 002: Functionality and Structure in p5.js**
 
-            - Review Week 001 Assignments
-            - Exploring built-in p5.js functions.
-            - Introduction to basic interactivity in p5.js: mouse and keyboard interactions.
-            - Computing without a Computer - Procedural Drawing
-            - Hands-on: Coding Mondrian (from Code as Creative Medium).
-            - Assign: Sketching with p5.js
+            ### Getting to know p5.js
+
+1. **Slide 1: Introduction to p5.js**
+   - p5.js is a JavaScript library that makes coding accessible for artists, designers, educators, and beginners.
+   - It provides a flexible platform that adapts to the coder's style.
+   - It promotes software literacy within the visual arts.
+
+2. **Slide 2: Setting up the Environment**
+   - To setup a local environment, you will need a text editor (Sublime Text, Atom, etc.) and a modern web browser.
+   - p5.js also provides a web editor for those who want to start coding immediately.
+
+3. **Slide 3: Structure of a p5.js Sketch**
+   - setup() is a function run once at the beginning that can be used for initial settings.
+   - draw() is a function run continuously that does all the drawing.
+   - A simple sketch often includes these two functions as a structure.
+
+```javascript
+// We declare two variables for the position of our ellipse
+let x;
+let y;
+
+// setup() is a p5.js function that runs once when the program starts
+function setup() {
+  // createCanvas(w, h) creates a canvas that is w pixels wide and h pixels tall
+  createCanvas(800, 600);
+
+  // Initialize x and y in the middle of the canvas
+  x = width / 2;
+  y = height / 2;
+}
+
+// draw() is a p5.js function that runs continuously after setup()
+function draw() {
+  // background(r, g, b) sets the background color in RGB
+  background(220, 220, 220);
+
+  // ellipse(x, y, w, h) draws an ellipse with center (x, y) and width w and height h
+  // We're just drawing a circle here, so the width and height are the same
+  ellipse(x, y, 50, 50);
+
+  // Move the circle's position a little bit
+  // This will create the animation effect
+  x = x + random(-5, 5);
+  y = y + random(-5, 5);
+}
+```
+
+This sketch first initializes some global variables for the x and y coordinates of a circle. In the `setup()` function, it creates a canvas and initializes the x and y variables to the center of the canvas. Then, in the `draw()` function which is called continuously, it sets the background color and then draws a circle at the (x, y) position. Finally, it slightly modifies the x and y values, so the circle moves a little bit each frame, creating a random walk animation. This highlights the continuously running nature of the `draw()` function.
+
+The `setup()` and `draw()` functions are key to p5.js and sketching with this library. `setup()` is where you handle one-time setup tasks such as creating the canvas, loading media, or initializing variables. `draw()`, on the other hand, is like the heartbeat of a p5.js sketch, running over and over again, continually updating the display.
+
+
+
+4. **Slide 4: Basics of Drawing in p5.js**
+   - createCanvas() sets the size of the drawing canvas.
+   - background(), stroke(), and fill() are used to set colors.
+   - You can draw basic shapes using functions like ellipse(), rect(), and line().
+
+```javascript
+// setup() is a p5.js function that runs once when the program starts
+function setup() {
+  // Create a canvas that is 800 pixels wide and 600 pixels tall
+  createCanvas(800, 600);
+}
+
+// draw() is a p5.js function that runs continuously after setup()
+function draw() {
+  // Set the background color to light grey
+  background(220);
+
+  // Set the stroke color to red
+  stroke(255, 0, 0);
+
+  // Draw a line from point (100, 100) to point (700, 500)
+  line(100, 100, 700, 500);
+
+  // Set the stroke color to black
+  stroke(0);
+
+  // Set the fill color to blue
+  fill(0, 0, 255);
+
+  // Draw a rectangle at (300, 200) with a width of 200 and height of 100
+  rect(300, 200, 200, 100);
+
+  // Set the fill color to green
+  fill(0, 255, 0);
+
+  // Draw an ellipse at (500, 400) with a width of 100 and height of 100
+  ellipse(500, 400, 100, 100);
+}
+```
+This sketch shows the basics of drawing shapes and controlling their appearance. After the canvas is created in `setup()`, the `draw()` function sets the background color and then draws a line, a rectangle, and a circle. The `stroke()` function sets the color of the outlines of shapes and the `fill()` function sets the color used to fill shapes.
+
+The `line()` function draws a line between two points, the `rect()` function draws a rectangle, and the `ellipse()` function draws an ellipse. For the `rect()` and `ellipse()` functions, the first two arguments set the location, and the second two arguments set the size.
+
+Note that p5.js uses a system called RGBA to specify colors. The parameters in `stroke()` and `fill()` are in the order red, green, blue, and optionally, alpha (for opacity). Each of these can be a number between 0 and 255. If you only pass one argument to `stroke()` or `fill()`, p5.js will interpret it as a grayscale value.
+
+
+5. **Slide 5: Variables in p5.js**
+   - Variables are used to store data, which can be numbers, strings, objects, etc.
+   - They can be used to control properties in a sketch, such as the size, position, or color of shapes.
+
+
+```javascript
+// Declare variables
+let x;
+let y;
+let circleSize;
+let rectSize;
+let rectColor;
+let circleColor;
+
+// setup() is a p5.js function that runs once when the program starts
+function setup() {
+  // Create a canvas
+  createCanvas(800, 600);
+  
+  // Initialize variables
+  x = width / 2;
+  y = height / 2;
+  circleSize = 50;
+  rectSize = 100;
+  rectColor = color(255, 0, 0); // Red
+  circleColor = color(0, 0, 255); // Blue
+}
+
+// draw() is a p5.js function that runs continuously after setup()
+function draw() {
+  // Set the background color to light grey
+  background(220);
+  
+  // Set the fill color to rectColor
+  fill(rectColor);
+  
+  // Draw a rectangle at (x, y) with a size of rectSize
+  rect(x - rectSize / 2, y - rectSize / 2, rectSize, rectSize);
+  
+  // Set the fill color to circleColor
+  fill(circleColor);
+  
+  // Draw a circle at (x, y) with a size of circleSize
+  ellipse(x, y, circleSize, circleSize);
+}
+```
+
+In this sketch, we declare variables at the top of our program, then initialize them in the `setup()` function. We use these variables to determine the size and color of a rectangle and a circle that we draw in the `draw()` function.
+
+The rectangle and the circle are both drawn at the point (x, y), but we adjust the rectangle's position so that (x, y) is at the center of the rectangle (by default, the position of a rectangle in p5.js refers to its top-left corner). The circle is naturally centered at (x, y). This means the circle will appear centered within the rectangle. 
+
+The `color()` function is used to create color variables. These can then be passed to functions like `fill()` to set the color of shapes.
+
+6. **Slide 6: Interactivity in p5.js**
+   - You can make your sketch interactive by using mouse and keyboard events.
+   - mousePressed, mouseMoved, and keyPressed are some of the functions that respond to user inputs.
+
+
+```javascript
+// Declare a variable for the size of our ellipse
+let size;
+
+// setup() is a p5.js function that runs once when the program starts
+function setup() {
+  // Create a canvas
+  createCanvas(800, 600);
+
+  // Initialize size
+  size = 50;
+}
+
+// draw() is a p5.js function that runs continuously after setup()
+function draw() {
+  // Set the background color to light grey
+  background(220);
+
+  // Draw an ellipse at the mouse's position with the size determined by size variable
+  ellipse(mouseX, mouseY, size, size);
+}
+
+// keyPressed() is a p5.js function that is called once every time a key is pressed
+function keyPressed() {
+  // If the 'up' arrow key was pressed, increase the size
+  if (keyCode === UP_ARROW) {
+    size = size + 10;
+  }
+
+  // If the 'down' arrow key was pressed, decrease the size
+  if (keyCode === DOWN_ARROW) {
+    size = size - 10;
+  }
+
+  // Prevent the size from going below 10
+  size = max(size, 10);
+}
+
+// mousePressed() is a p5.js function that is called once every time a mouse button is pressed
+function mousePressed() {
+  // Change the color randomly every time the mouse is pressed
+  fill(random(255), random(255), random(255));
+}
+```
+
+This sketch uses mouse input to control the position of a circle and keyboard input to control its size. The `mouseX` and `mouseY` variables automatically contain the current mouse position, and the `mousePressed()` function is called whenever a mouse button is pressed. 
+
+The `keyPressed()` function is called whenever a key is pressed, and the `keyCode` variable automatically contains the code of the key that was last pressed. We use this to check if the 'up' or 'down' arrow key was pressed, and increase or decrease the size of the circle accordingly. 
+
+We use the `random()` function to set the fill color to a random color whenever the mouse is pressed. The `random()` function returns a random number between 0 and the number you pass to it. Since color values can be between 0 and 255 in p5.js, we use `random(255)` to get a random color value.
+
+This sketch demonstrates the use of p5.js's built-in functions and variables for handling mouse and keyboard input, which make it easy to add interactivity to sketches.
+
+7. **Slide 7: Functions in p5.js**
+   - A function is a set of statements that perform a task.
+   - You can create your own functions in p5.js, which helps organize code and avoid repetition.
+
+```javascript
+// setup() is a p5.js function that runs once when the program starts
+function setup() {
+  // Create a canvas
+  createCanvas(800, 600);
+
+  // Set the stroke weight (thickness)
+  strokeWeight(2);
+
+  // Draw flowers in random positions
+  for (let i = 0; i < 100; i++) {
+    let x = random(width);
+    let y = random(height);
+    let size = random(20, 50);
+    let flowerType = random(1);
+    if (flowerType < 0.5) {
+      drawDaisy(x, y, size);
+    } else {
+      drawTulip(x, y, size);
+    }
+  }
+}
+
+// drawDaisy() is a custom function that draws a daisy at the specified position and size
+function drawDaisy(x, y, size) {
+  fill(255, 255, 0); // Yellow
+  ellipse(x, y, size, size); // Center
+  fill(255); // White
+  for (let angle = 0; angle < TWO_PI; angle += PI / 8) {
+    let px = x + cos(angle) * size / 2;
+    let py = y + sin(angle) * size / 2;
+    ellipse(px, py, size / 2, size / 2); // Petals
+  }
+}
+
+// drawTulip() is a custom function that draws a tulip at the specified position and size
+function drawTulip(x, y, size) {
+  fill(255, 0, 0); // Red
+  for (let angle = 0; angle < TWO_PI; angle += PI / 6) {
+    let px = x + cos(angle) * size / 2;
+    let py = y + sin(angle) * size / 2;
+    ellipse(px, py, size / 3, size / 2); // Petals
+  }
+  fill(0, 128, 0); // Green
+  rect(x - size / 20, y, size / 10, size / 2); // Stem
+}
+```
+
+This sketch draws a field of flowers, with each flower being either a daisy or a tulip. It demonstrates how custom functions (`drawDaisy()` and `drawTulip()`) can be used to organize the code and avoid repeating the same or similar code in multiple places. These functions each take three arguments - the x and y positions where the flower should be drawn, and the size of the flower. The functions use these arguments to draw the flowers in the correct location and at the correct size. 
+
+The `for` loop in the `setup()` function is used to draw 100 flowers at random positions on the canvas. It uses the `random()` function to generate the position and size of each flower, and to decide whether to draw a daisy or a tulip. 
+
+Now, let's make it so a flower is drawn wherever the user clicks. For this, we'll use a version of the previous sketch but with a `draw()` function and a `mousePressed()` function.
+
+```javascript
+// Declare a variable to store the current flower type
+let currentFlowerType;
+
+// setup() is a p5.js function that runs once when the program starts
+function setup() {
+  // Create a canvas
+  createCanvas(800, 600);
+
+  // Set the stroke weight (thickness)
+  strokeWeight(2);
+
+  // Initially, set the current flower type to 'daisy'
+  currentFlowerType = 'daisy';
+}
+
+// draw() is a p5.js function that runs continuously after setup()
+function draw() {
+  // Set the background color to light grey
+  background(220);
+
+  // If the mouse is pressed, draw a flower at the mouse position
+  if (mouseIsPressed) {
+    let size = random(20, 50);
+    if (currentFlowerType === 'daisy') {
+      drawDaisy(mouseX, mouseY, size);
+    } else {
+      drawTulip(mouseX, mouseY, size);
+    }
+  }
+}
+
+// mousePressed() is a p5.js function that is called once every time a mouse button is pressed
+function mousePressed() {
+  // Each time the mouse is pressed, switch the current flower type
+  currentFlowerType = currentFlowerType === 'daisy' ? 'tulip' : 'daisy';
+}
+
+// drawDaisy() and drawTulip() are custom functions (same as in the previous example)
+// ... (rest of the code is the same as the previous example) ...
+```
+
+In this updated sketch, the `draw()` function checks if the mouse is pressed (`mouseIsPressed` is a p5.js variable that is `true` when the mouse button is down and `false` otherwise). If the mouse is pressed, it draws a flower of the current type at the mouse position. The size of the flower is randomly chosen each time one is drawn.
+
+The `mousePressed()` function switches the current flower type each time the mouse is pressed. This means that if you hold down the mouse button and move the mouse around, the program will keep drawing flowers of the same type, and it will switch to the other type each time you press the mouse button.
+
+This sketch shows how the `draw()` function can be used to add continuous interactivity to a sketch. It also demonstrates how p5.js's built-in mouse functions and variables can be used together with custom functions to control what the program does.
+
+8. **Slide 8: Animation in p5.js**
+   - You can create animation by continuously updating the variables that control shapes' properties.
+   - For example, if you increase the x-position of a shape in the draw() function, it will move across the screen.
+
+
+```javascript
+// Set up ball object
+let ball = {
+  x: 100,
+  y: 100,
+  xSpeed: 2,
+  ySpeed: 3,
+  diameter: 50
+}
+
+function setup() {
+  // Create the canvas
+  createCanvas(800, 600);
+}
+
+function draw() {
+  // Set the background color to white
+  background(255);
+
+  // Draw the ball
+  fill(255, 0, 0); // Red color
+  ellipse(ball.x, ball.y, ball.diameter, ball.diameter);
+
+  // Move the ball
+  ball.x += ball.xSpeed;
+  ball.y += ball.ySpeed;
+
+  // Check for collision with the edges and bounce the ball
+  if (ball.x > width - ball.diameter / 2 || ball.x < ball.diameter / 2) {
+    ball.xSpeed *= -1;
+  }
+  if (ball.y > height - ball.diameter / 2 || ball.y < ball.diameter / 2) {
+    ball.ySpeed *= -1;
+  }
+}
+```
+
+In this sketch, we have a single `ball` object which has properties for its position (`x` and `y`), speed in each direction (`xSpeed` and `ySpeed`), and size (`diameter`).
+
+In the `draw()` function, which is called approximately 60 times per second, we first clear the canvas with the `background()` function. Then we draw the ball at its current position with the `ellipse()` function.
+
+Then, we update the ball's position by adding its speed to its current position. This creates the animation effect - each time `draw()` is called, the ball is drawn slightly to the right and down from where it was last time, creating the illusion of movement.
+
+Finally, we check if the ball has hit the edge of the canvas. If it has, we reverse its speed in the appropriate direction, causing it to bounce back the other way. The ball's diameter is divided by 2 because the `ellipse()` function draws the ellipse centered at the specified coordinates, so the ball's edges are half its diameter away from its center.
+
+This is a very basic animation, but it demonstrates the fundamental concept of how animations work in p5.js - by updating and re-drawing the scene in each call to `draw()`, you can create the illusion of movement or change over time.
+
+9. **Slide 9: Objects and Arrays in  p5.js**
+  Spinning flowers...
+
+```javascript
+// Declare an array to store the flowers
+let flowers = [];
+
+// setup() is a p5.js function that runs once when the program starts
+function setup() {
+  // Create a canvas
+  createCanvas(800, 600);
+
+  // Set the stroke weight (thickness)
+  strokeWeight(2);
+}
+
+// draw() is a p5.js function that runs continuously after setup()
+function draw() {
+  // Set the background color to light grey
+  background(220);
+
+  // Draw all the flowers
+  for (let flower of flowers) {
+    // Increase the flower's rotation angle
+    flower.angle += 0.02;
+
+    // Draw the flower
+    if (flower.type === 'daisy') {
+      drawDaisy(flower.x, flower.y, flower.size, flower.angle);
+    } else {
+      drawTulip(flower.x, flower.y, flower.size, flower.angle);
+    }
+  }
+}
+
+// mousePressed() is a p5.js function that is called once every time a mouse button is pressed
+function mousePressed() {
+  // Create a new flower at the mouse position
+  let flower = {
+    x: mouseX,
+    y: mouseY,
+    size: random(20, 50),
+    type: random(1) < 0.5 ? 'daisy' : 'tulip',
+    angle: 0
+  };
+
+  // Add the new flower to the array
+  flowers.push(flower);
+}
+
+// drawDaisy() is a custom function that draws a daisy at the specified position, size and rotation angle
+function drawDaisy(x, y, size, angle) {
+  push(); // Save the current transformation matrix
+  translate(x, y); // Move the origin to the flower's position
+  rotate(angle); // Rotate the coordinate system
+
+  fill(255, 255, 0); // Yellow
+  ellipse(0, 0, size, size); // Center
+  fill(255); // White
+  for (let a = 0; a < TWO_PI; a += PI / 8) {
+    let px = cos(a) * size / 2;
+    let py = sin(a) * size / 2;
+    ellipse(px, py, size / 2, size / 2); // Petals
+  }
+
+  pop(); // Restore the transformation matrix
+}
+
+// drawTulip() is a custom function that draws a tulip at the specified position, size and rotation angle
+function drawTulip(x, y, size, angle) {
+  push(); // Save the current transformation matrix
+  translate(x, y); // Move the origin to the flower's position
+  rotate(angle); // Rotate the coordinate system
+
+  fill(255, 0, 0); // Red
+  for (let a = 0; a < TWO_PI; a += PI / 6) {
+    let px = cos(a) * size / 2;
+    let py = sin(a) * size / 2;
+    ellipse(px, py, size / 3, size / 2); // Petals
+  }
+  fill(0, 128, 0); // Green
+  rect(0 - size / 20, 0, size / 10, size / 2); // Stem
+
+  pop(); // Restore the transformation matrix
+}
+```
+
+In this sketch, every time the mouse is clicked, a new flower is created at the mouse position, with a random type and size, and an initial rotation angle of 0. This flower object is then added to the `flowers` array.
+
+In the `draw()` function, for each flower in the `flowers` array, the rotation angle is slightly increased, and then the flower is drawn at its current position and angle.
+
+The `push()` and `pop()` functions are used to save and restore the transformation matrix (which includes the current translate, rotate and scale settings), so that the transformations applied for one flower don't affect the others.
+
+This sketch shows how you can use objects and arrays to manage multiple instances of complex entities in p5.js, and how you can use transformations to create interesting effects like rotation.
+
+10. **Slide 10: Using p5.js Libraries**
+   - p5.js has additional libraries that provide more functions, like p5.sound for sound synthesis and analysis, p5.dom for HTML5 objects, and more.
+   - To use a library, you need to include it in your HTML file.
+
+
+
+
+If you're using the Processing IDE (PDE) with the p5.js mode, you'll need to structure your sketch a little differently. Here's how you can restructure the previous sketch:
+
+Before proceeding, make sure you have set the mode to p5.js in the Processing IDE and have the p5.sound library installed. 
+
+Here's the new structure:
+```javascript
+let sound; // Variable to hold a sound
+let circle = {
+  x: 200,
+  y: 200,
+  diameter: 100
+};
+
+function preload() {
+  // Load a sound file
+  sound = loadSound('assets/your_sound_file.mp3');
+}
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  fill(255, 0, 0);
+  ellipse(circle.x, circle.y, circle.diameter, circle.diameter);
+}
+
+function mousePressed() {
+  // Check if the mouse is inside the circle
+  let d = dist(mouseX, mouseY, circle.x, circle.y);
+  if (d < circle.diameter / 2) {
+    // If it is, play the sound
+    sound.play();
+  }
+}
+```
+
+Remember to replace `'assets/your_sound_file.mp3'` with the actual path to your sound file. In p5.js mode, file paths are relative to the sketch's folder. In this case, the sound file should be located in the `assets` folder inside your sketch's folder. 
+
+
+11. **Slide 11: Resources and Q&A**
+    - The official p5.js website provides comprehensive resources including documentation, tutorials, and examples.
+    - Now, open the floor for questions and provide answers to clarify any confusion.
+
+
+
           </md-block>
         </article>
         <article id="Thursday">
           <md-block>
-            **August 31 - Class 003: Assignment Introduction and Recap**
+            **August 31 - Class 003**
+            
+            Drawing shapes in p5.js randomly...
 
-- Recap of basic concepts: variables, functions, interactivity.
-- Assignment: Simple Features of p5.js
-- In-class work time for the assignment.
+p5.js sketch example that will draw a random shape in a random color at a random position on the canvas whenever the mouse is clicked:
+
+```javascript
+let shapes = ['ellipse', 'rect', 'triangle'];
+
+function setup() {
+  createCanvas(800, 600);
+  noStroke();
+}
+
+function draw() {
+  // Set the background color to white
+  background(255);
+}
+
+function mousePressed() {
+  // Choose a random shape
+  let chosenShape = random(shapes);
+
+  // Choose a random color
+  let r = random(255);
+  let g = random(255);
+  let b = random(255);
+
+  // Choose a random position and size
+  let x = random(width);
+  let y = random(height);
+  let size = random(20, 100);
+
+  // Set the fill color
+  fill(r, g, b);
+
+  // Draw the chosen shape
+  if (chosenShape === 'ellipse') {
+    ellipse(x, y, size, size);
+  } else if (chosenShape === 'rect') {
+    rect(x, y, size, size);
+  } else if (chosenShape === 'triangle') {
+    triangle(x, y, x+size/2, y-size, x+size, y);
+  }
+}
+```
+
+In this sketch, we have an array of shape names, and whenever the mouse is clicked, the `mousePressed()` function is called. This function chooses a random shape, color, position, and size, and then draws the chosen shape at the chosen position with the chosen color and size.
+
+The `random()` function is a p5.js function which returns a random number. When called with no arguments, it returns a random number between 0 and 1. When called with one argument, it returns a random number between 0 and the argument. When called with two arguments, it returns a random number between the two arguments. We use this function to choose random shapes, colors, positions, and sizes.
+
+In the `mousePressed()` function, we first choose a random shape by picking a random element from the `shapes` array with `random(shapes)`. We then choose a random color by picking three random numbers between 0 and 255 for the red, green, and blue components of the color. We then choose a random position and size by picking random numbers between 0 and the width or height of the canvas for the x and y coordinates, and between 20 and 100 for the size.
+
+After choosing the random values, we set the fill color with `fill(r, g, b)`, and then draw the chosen shape at the chosen position with the chosen size. We use an `if` statement to determine which shape to draw based on the chosen shape. The `ellipse()` function draws an ellipse (or circle, since we're using the same width and height), the `rect()` function draws a rectangle, and the `triangle()` function draws a triangle.
+
+
+### Recap Variables
+
+Variables are a fundamental aspect of programming in p5.js and other languages. They store data that can be used and manipulated throughout your program. Here are some key elements to understand about using variables in p5.js:
+
+1. **Declaration**: Before you use a variable, you need to declare it. In JavaScript (and by extension p5.js), you declare a variable with the `let` or `const` keyword followed by the variable name, like this: `let myVariable;`. `let` allows you to reassign the variable later, while `const` creates a constant variable that can't be reassigned.
+
+2. **Assignment**: Once you've declared a variable, you can assign a value to it using the `=` operator. You can do this when you declare the variable (`let myVariable = 10;`) or later in your program (`myVariable = 20;`).
+
+3. **Data Types**: Variables can hold different types of data. The main data types you'll use in p5.js are numbers (like `let x = 10;`), strings (like `let name = 'p5.js';`), booleans (like `let isDrawing = true;`), arrays (like `let numbers = [1, 2, 3, 4, 5];`), and objects (like `let point = {x: 10, y: 20};`).
+
+4. **Scope**: Variables in JavaScript have scope, which determines where they can be accessed from. If you declare a variable inside a function, it's local to that function and can't be accessed outside of it. If you declare a variable outside of any function, it's global and can be accessed from anywhere in your program.
+
+5. **Predefined Variables**: p5.js comes with a number of predefined variables that you can use in your sketches. For example, `width` and `height` give you the width and height of the drawing canvas, `mouseX` and `mouseY` give you the current mouse position, and `frameCount` gives you the number of frames that have been displayed since the sketch started.
+
+6. **Variable Naming**: Variable names should be descriptive and follow the camelCase convention. They must start with a letter, underscore, or dollar sign, and can contain numbers but not as the first character. 
+
+7. **Manipulation**: You can perform operations on variables and use them in functions. For instance, you could increase the value of a variable (`myVariable++`), use a variable to set the color of a shape (`fill(myVariable);`), or use a variable to control the position of a shape (`ellipse(myVariable, 100, 50, 50);`).
+
+Remember that good use of variables can make your code more flexible, readable, and efficient.
+
+### Recap Functions
+
+Functions in p5.js (and JavaScript in general) are crucial elements for structuring your code, performing complex tasks, and preventing code repetition. Here are the key elements of using functions in p5.js:
+
+1. **Declaration**: Functions are declared using the `function` keyword, followed by the name of the function, and a set of parentheses `()`. The code that the function executes is placed between a set of curly braces `{}`. Like this:
+
+```javascript
+function myFunction() {
+  // code to be executed
+}
+```
+
+2. **Parameters and Arguments**: Functions can have parameters, which are variables that act as placeholders for values that the function will use when it's called. Parameters are specified in the parentheses when the function is declared. When you call the function, you provide the actual values (arguments) that replace the parameters. Like this:
+
+```javascript
+function drawCircle(x, y, diameter) { // x, y, and diameter are parameters
+  ellipse(x, y, diameter, diameter);
+}
+
+drawCircle(50, 50, 80); // 50, 50, and 80 are arguments
+```
+
+3. **Return Value**: Functions can return a value, which is specified by the `return` keyword. Once a `return` statement is executed, the function stops running and the value is sent back to the caller. Like this:
+
+```javascript
+function square(number) {
+  return number * number;
+}
+
+let result = square(5); // result is now 25
+```
+
+4. **Predefined Functions**: p5.js comes with many predefined functions that perform common tasks. For example, `background()` sets the background color, `fill()` sets the fill color, `ellipse()` draws an ellipse, and `createCanvas()` creates a drawing canvas.
+
+5. **setup() and draw()**: These are special functions in p5.js. The `setup()` function runs once at the beginning of the sketch, and the `draw()` function runs continuously after `setup()` completes, creating a loop that's useful for animation.
+
+6. **Anonymous Functions**: JavaScript allows for anonymous functions, which are functions without a name. They can be used in event listeners or as arguments to other functions. Here's an example of an anonymous function in an event listener:
+
+```javascript
+button.mousePressed(function() {
+  // code to be executed when the button is pressed
+});
+```
+
+7. **Scope**: Just like variables, functions also have scope. If a function is declared globally, it can be accessed from anywhere in your code. But if it's declared inside another function, it's local to that function and can't be accessed outside of it.
+
+8. **Higher-Order Functions**: These are functions that take other functions as arguments or return functions. They're a more advanced topic, but they can make your code more modular and easier to understand once you're comfortable with them.
+
+Understanding and effectively using functions is key to creating complex p5.js sketches and other JavaScript programs.
+
+Example sketch with more than one custom function:
+
+Next, let's create a sketch that draws a flower and a sun, where each shape is drawn by its own function.
+
+```javascript
+function setup() {
+  createCanvas(800, 600);
+  background(135, 206, 235); // Set a sky-blue background
+  noLoop();
+}
+
+function draw() {
+  drawFlower(100, 300, 20);
+  drawFlower(200, 350, 30);
+  drawFlower(300, 320, 25);
+  drawSun(650, 100, 50);
+}
+
+// Custom function to draw a flower at the given position and size
+function drawFlower(x, y, size) {
+  fill(255, 0, 255); // Pink
+  noStroke();
+  for (let angle = 0; angle < TWO_PI; angle += PI / 4) { // For every 45 degrees
+    let px = x + cos(angle) * size;
+    let py = y + sin(angle) * size;
+    ellipse(px, py, size);
+  }
+  fill(255, 255, 0); // Yellow
+  ellipse(x, y, size / 2); // Draw the center of the flower
+}
+
+// Custom function to draw a sun at the given position and size
+function drawSun(x, y, size) {
+  fill(255, 255, 0); // Yellow
+  noStroke();
+  ellipse(x, y, size); // Draw the body of the sun
+  for (let angle = 0; angle < TWO_PI; angle += PI / 8) { // For every 22.5 degrees
+    let px = x + cos(angle) * (size + 10);
+    let py = y + sin(angle) * (size + 10);
+    ellipse(px, py, size / 4); // Draw a ray of the sun
+  }
+}
+```
+
+In this sketch, we have two custom functions, `drawFlower()` and `drawSun()`, which draw a flower and a sun respectively. Each function takes parameters that specify the position and size of the shape. The `drawFlower()` function also draws circles around a central point to form the petals of the flower, and the `drawSun()` function draws smaller circles around the sun to form rays.
+
+In the `draw()` function, we call these functions with different arguments to draw several flowers and a sun on the canvas. This is a good example of how custom functions can be used to avoid code repetition and make your sketches more modular and easier to understand.
           </md-block>
         </article>
       </div>
@@ -90,7 +769,9 @@
 </div>
 <script src="../../../js/bootstrap.bundle.min.js"></script>
 <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js"></script>
+<script src="../../../js/10print.js"></script>
+</div>
     </body>
 
 </html>

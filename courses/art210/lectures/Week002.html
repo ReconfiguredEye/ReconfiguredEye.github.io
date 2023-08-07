@@ -16,9 +16,9 @@
 
 
 <body>
+<div class="canvasContainer">
 
-
-<div class="col-lg-8 mx-auto p-4 py-md-5">
+<div class=" col-lg-10 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
     <a href="../../../index.html" class="d-flex align-items-center text-body-emphasis text-decoration-none">
       <h4>colby jennings</h4>
@@ -34,12 +34,1236 @@
         
         <article id="Tuesday">
           <md-block>
-            
+            ### Basic Design Elements and Principles in p5.js
+
+---
+
+**Slide 1: Introduction**
+
+- **Overview of the Session**
+   - State the topic: Graphics, Color, and Design Principles in p5.js
+   - Relevance: Explain how understanding these elements can enhance the students' creative coding projects. These elements can be used to create visually appealing and engaging designs.
+   - Learning outcome: By the end of the session, students should be able to use these elements in p5.js to improve the aesthetics of their projects.
+
+- **About p5.js**
+   - Brief history: p5.js was created in 2014 by Lauren McCarthy and developed by a community of collaborators, with the aim of making coding accessible for artists, designers, educators, and beginners.
+   - Uses: Primarily used for creating visual arts and interactive graphics on the web.
+
+---
+
+**Slide 2: Elements of Art/Design - Color**
+
+- **Defining Color**
+  - Definition: Color, derived from reflected light, is a fundamental element in art and design. It can be used to create mood, evoke emotion, or create emphasis.
+  - Importance: Understanding color theory (the color wheel, color harmony, etc.) can greatly impact the effectiveness of a design.
+
+- **Color in p5.js**
+  - Basic usage: Introduce the `fill()` and `stroke()` functions, which are used to set the colors of shapes in p5.js. Also, mention the `background()` function, which sets the color of the background.
+  - Color modes: Discuss RGB and HSB color modes in p5.js.
+  - Example: Show how to use these functions to manipulate color in a p5.js sketch.
+
+p5.js offers multiple ways to declare and use colors. You can specify colors in terms of RGB (red, green, blue), HSB (hue, saturation, brightness), and even as a string with a named color or hexadecimal color code.
+
+Here's an example sketch that showcases these different methods:
+
+```javascript
+function setup() {
+  createCanvas(800, 600);
+  noLoop();
+}
+
+function draw() {
+  background(220);
+
+  // RGB color
+  fill(255, 0, 0); // Red
+  rect(50, 50, 100, 100);
+
+  // RGB color with alpha (transparency)
+  fill(0, 255, 0, 127); // Green with 50% transparency
+  rect(200, 50, 100, 100);
+
+  // HSB color
+  colorMode(HSB); // Switch to HSB mode
+  fill(120, 100, 100); // Fully saturated and bright green
+  rect(350, 50, 100, 100);
+  colorMode(RGB); // Switch back to RGB mode
+
+  // Named color
+  fill('blue'); // Blue
+  rect(500, 50, 100, 100);
+
+  // Hexadecimal color code
+  fill('#FFA500'); // Orange
+  rect(650, 50, 100, 100);
+}
+```
+
+In this sketch, we're using the `fill()` function to set the color of the rectangles, and the `rect()` function to draw the rectangles. The first rectangle is red, the second is green with 50% transparency, the third is green specified in HSB mode, the fourth is blue specified with a named color, and the fifth is orange specified with a hexadecimal color code. 
+
+Note that the `colorMode()` function is used to switch between RGB and HSB modes. It's important to switch back to RGB mode after using HSB mode, as p5.js uses RGB mode by default.
+
+---
+
+**Slide 3: Elements of Art/Design - Value**
+
+- **Defining Value**
+  - Definition: Value refers to the relative lightness or darkness of a color. It is an important tool for the designer/artist because it defines form and creates spatial illusions.
+  - Role in design: Contrast of value separates objects in space, while gradation of value suggests mass and contour of a contiguous surface.
+
+- **Value in p5.js**
+  - Basic usage: Discuss the use of the `brightness()` function in p5.js, which returns the brightness in an image or pixel array.
+  - Example: Show an example of manipulating value in a p5.js sketch to create effects of light and dark.
+
+---
+
+**Slide 4: Elements of Art/Design - Line**
+
+- **Defining Lines**
+   - Definition: A line in art is a mark made on a surface. It is a fundamental tool for visual communication in art and design.
+   - Purpose: Lines can guide the viewer’s eye, divide space, outline forms, suggest a mood or feeling, and much more.
+
+- **Lines in p5.js**
+   - Basic usage: Introduce the `line()` function in p5.js, which draws a line on the screen between two points.
+   - Parameters: Explain that the `line()` function takes four arguments, the x and y coordinates where the line begins and where it ends: `line(x1, y1, x2, y2)`.
+   - Example: Provide a basic example of how to use `line()` in a p5.js sketch.
+
+```javascript
+function setup() {
+  createCanvas(800, 600);
+  background(220);
+  noLoop();
+}
+
+function draw() {
+  // First line
+  stroke(0, 255, 150); // color
+  line(0, 20, width, 20); // position and size
+
+  // Second line
+  stroke(64, 191, 150); // color
+  line(0, 40, width, 40); // position and size
+
+  // Third line
+  stroke(127, 128, 150); // color
+  line(0, 60, width, 60); // position and size
+
+  // Fourth line
+  stroke(191, 64, 150); // color
+  line(0, 80, width, 80); // position and size
+
+  // Fifth line
+  stroke(255, 0, 150); // color
+  line(0, 100, width, 100); // position and size
+}
+```
+
+As you can see, without a loop, each line needs to be drawn individually with its own `stroke()` and `line()` calls. If you wanted to draw more lines or change the position or color of the lines, you'd have to add or modify many lines of code. This becomes increasingly cumbersome and difficult to manage as you add more lines.
+
+with Loop:
+
+```javascript
+function setup() {
+  createCanvas(800, 600);
+  background(220);
+  noLoop();
+}
+
+function draw() {
+  for(let i = 0; i < height; i += 20) {
+    // Choose a color for the line based on its vertical position
+    stroke(map(i, 0, height, 0, 255), map(i, 0, height, 255, 0), 150);
+    line(0, i, width, i);
+  }
+}
+```
+
+In this sketch, the `draw()` function uses a for loop to draw lines across the canvas from top to bottom. The vertical position of each line (the `i` variable) is used to choose a color for the line. The `map()` function is used to map the position from the range 0 to `height` to the range 0 to 255 for the red and green color components. The blue color component is fixed at 150.
+
+Each line starts at the left edge of the canvas (`x = 0`) and goes to the right edge of the canvas (`x = width`). The vertical position of the line is given by `i`, which increases by 20 pixels each iteration of the loop. The `noLoop()` function is called in `setup()` to prevent `draw()` from looping, so the lines are only drawn once.
+
+Compare the versions above, where the number of lines and the color and position of each line can be easily controlled with a few lines of code or each is drawn separately. This is a good illustration of how loops can make your code more efficient and flexible.
+
+---
+
+**Slide 5: Elements of Art/Design - Shape**
+
+- **Defining Shapes**
+   - Definition: A shape is a closed line that is an element of art. Shapes can be geometric (like squares and circles) or organic (like free-form or natural shapes). They can define areas within an artwork and can create other art elements such as line and color.
+   - Importance: Shapes are fundamental in coding as they are the building blocks of any visual project.
+
+- **Shapes in p5.js**
+   - Basic usage: Introduce the various shape functions in p5.js such as `rect()`, `circle()`, `ellipse()`, and `triangle()`.
+   - Parameters: Explain the arguments these functions take. For instance, `rect(x, y, width, height)`, `circle(x, y, diameter)`, `ellipse(x, y, width, height)`, and `triangle(x1, y1, x2, y2, x3, y3)`.
+   - Example: Show how to create these shapes in a p5.js sketch.
+
+drawing shapes:
+
+```javascript
+function setup() {
+  createCanvas(800, 600);
+  background(220);
+  noLoop();
+}
+
+function draw() {
+  // Draw a red rectangle at (100, 100) with width 200 and height 100
+  fill(255, 0, 0); // Red
+  rect(100, 100, 200, 100);
+
+  // Draw a green circle at (400, 300) with diameter 150
+  fill(0, 255, 0); // Green
+  ellipse(400, 300, 150);
+
+  // Draw a blue triangle with vertices at (600, 500), (650, 400), and (700, 500)
+  fill(0, 0, 255); // Blue
+  triangle(600, 500, 650, 400, 700, 500);
+}
+```
+
+This sketch uses the `rect()`, `ellipse()`, and `triangle()` functions to draw a rectangle, a circle, and a triangle, respectively. The `fill()` function is used before each shape to set its color. The arguments to each shape function specify the position and size of the shape.
+
+This is a simple example, but you can create more complex drawings by adding more shapes and adjusting their positions, sizes, and colors. Note that the shapes are drawn in the order of the code, so later shapes are drawn on top of earlier shapes. This can create a layering effect.
+
+many shapes:
+
+```javascript
+function setup() {
+  createCanvas(800, 600);
+  background(220);
+  noLoop();
+}
+
+function draw() {
+  // Draw 200 circles
+  for(let i = 0; i < 200; i++) {
+    // Choose a random color for the circle
+    fill(random(255), random(255), random(255), random(50, 100));
+    // Choose a random position for the circle
+    let x = random(width);
+    let y = random(height);
+    // Choose a random size for the circle
+    let size = random(20, 100);
+    // Draw the circle
+    ellipse(x, y, size);
+  }
+}
+```
+
+In this sketch, the `draw()` function uses a for loop to draw 200 circles. The position, color, and size of each circle are chosen randomly. The `random()` function is used to choose a random number in a given range, and the `fill()` function is used to set the color of the circle. The `ellipse()` function is then used to draw the circle at the chosen position and size.
+
+Each iteration of the loop draws a new circle on top of the previous ones, creating a layered effect. The alpha value of the color (the fourth argument to the `fill()` function) is also chosen randomly between 50 and 100, making the circles semi-transparent and enhancing the layered effect.
+
+This sketch shows how you can use random values and layering to create complex and interesting visual effects with a simple for loop and a few p5.js functions.
+
+
+---
+
+**Slide 6: Elements of Art/Design - Form**
+
+- **Defining Form**
+  - Definition: Form refers to objects that are 3D in shape or give the illusion of three dimensions. They have length, width, and depth.
+  - Role in design: Understanding form can help in creating realistic three-dimensional objects in the digital space and adding depth to your design.
+
+- **Form in p5.js**
+  - 3D primitives: p5.js includes a set of 3D primitives which can be used to create 3D forms. Examples include `box()`, `sphere()`, `cylinder()`, `cone()`, and `torus()`.
+  - Parameters: Discuss the parameters for these functions. For example, `box(width, height, depth)`, `sphere(radius)`, `cylinder(radius, height)`, `cone(radius, height)`, and `torus(radius, tubeRadius)`.
+  - Example: Show an example of how to use these functions to create 3D forms in a p5.js sketch.
+
+p5.js comes with a WEBGL renderer that you can use to create 3D graphics. Let's create a simple sketch that draws three different 3D primitives: a box, a sphere, and a cone:
+
+```javascript
+function setup() {
+  createCanvas(800, 600, WEBGL);
+}
+
+function draw() {
+  background(220);
+
+  rotateX(frameCount * 0.01); // Rotate the scene around the X-axis
+  rotateY(frameCount * 0.01); // Rotate the scene around the Y-axis
+
+  // Draw a red box at (-200, 0, 0) with size 100
+  push(); // Save the current transformation state
+  translate(-200, 0, 0); // Move to the position of the box
+  fill(255, 0, 0); // Red
+  box(100); // Draw the box
+  pop(); // Restore the transformation state
+
+  // Draw a green sphere at (0, 0, 0) with diameter 100
+  push(); // Save the current transformation state
+  fill(0, 255, 0); // Green
+  sphere(100); // Draw the sphere
+  pop(); // Restore the transformation state
+
+  // Draw a blue cone at (200, 0, 0) with bottom radius 50 and height 200
+  push(); // Save the current transformation state
+  translate(200, 0, 0); // Move to the position of the cone
+  fill(0, 0, 255); // Blue
+  cone(50, 200); // Draw the cone
+  pop(); // Restore the transformation state
+}
+```
+
+This sketch uses the `createCanvas()` function with the `WEBGL` argument to create a 3D canvas. The `draw()` function first rotates the scene using the `rotateX()` and `rotateY()` functions, giving the effect of the shapes rotating in 3D space.
+
+The `push()` and `pop()` functions are used to save and restore the transformation state, so that the translations and rotations for each shape don't affect the others. The `translate()` function is used to move to the position of each shape before drawing it. The `fill()` function is used to set the color of each shape, and the `box()`, `sphere()`, and `cone()` functions are used to draw the shapes.
+
+more complex:
+
+Let's make a more complex scene that creates a "solar system" simulation. We'll have a central sphere representing the sun, and two smaller spheres representing planets orbiting the sun. We'll use some trigonometry to make the planets move in circular orbits:
+
+```javascript
+let angle1 = 0;
+let angle2 = 0;
+
+function setup() {
+  createCanvas(800, 600, WEBGL);
+}
+
+function draw() {
+  background(220);
+
+  // Rotate the scene slightly to give a tilted view
+  rotateX(PI/4);
+  rotateY(PI/4);
+
+  // Draw a large yellow sphere at (0, 0, 0) representing the sun
+  push();
+  fill(255, 255, 0); // Yellow
+  sphere(100); // Draw the sun
+  pop();
+
+  // Calculate the position of the first planet using circular motion equations
+  let x1 = 200 * cos(angle1);
+  let y1 = 200 * sin(angle1);
+  angle1 += 0.02; // Increase the angle to make the planet move
+
+  // Draw a smaller green sphere representing the first planet
+  push();
+  translate(x1, y1, 0); // Move to the position of the first planet
+  fill(0, 255, 0); // Green
+  sphere(50); // Draw the first planet
+  pop();
+
+  // Calculate the position of the second planet using circular motion equations
+  let x2 = 300 * cos(angle2);
+  let y2 = 300 * sin(angle2);
+  angle2 += 0.01; // Increase the angle to make the planet move
+
+  // Draw a smaller blue sphere representing the second planet
+  push();
+  translate(x2, y2, 0); // Move to the position of the second planet
+  fill(0, 0, 255); // Blue
+  sphere(30); // Draw the second planet
+  pop();
+}
+```
+
+In this sketch, we're using the `cos()` and `sin()` functions to calculate the positions of the planets in circular orbits around the sun. The `angle1` and `angle2` variables are increased each frame to make the planets move. We're using different rates of increase to make the planets orbit at different speeds.
+
+We're also using the `translate()` function to move to the position of each planet before drawing it, and the `push()` and `pop()` functions to save and restore the transformation state so that the translations for each planet don't affect the others. The `fill()` function is used to set the color of each planet, and the `sphere()` function is used to draw the planets.
+
+This example gives you a glimpse of the kind of complex scenes you can create with 3D graphics in p5.js.
+
+adding more planets:
+
+Let's create a simple model of our solar system using eight planets and the sun. We'll use different diameters and speeds for the planets to vaguely mimic their real properties:
+
+```javascript
+let angles = [0, 0, 0, 0, 0, 0, 0, 0];
+let diameters = [5, 12, 12, 6, 13, 30, 25, 10];
+let distances = [40, 58, 80, 100, 130, 180, 230, 280];
+let speeds = [0.04, 0.03, 0.02, 0.015, 0.01, 0.008, 0.006, 0.005];
+
+function setup() {
+  createCanvas(800, 600, WEBGL);
+}
+
+function draw() {
+  background(220);
+
+  // Rotate the scene slightly to give a tilted view
+  rotateX(PI/4);
+  rotateY(PI/4);
+
+  // Draw a large yellow sphere at (0, 0, 0) representing the sun
+  push();
+  fill(255, 255, 0); // Yellow
+  sphere(50); // Draw the sun
+  pop();
+
+  // Draw each planet
+  for (let i = 0; i < 8; i++) {
+    // Calculate the position of the planet using circular motion equations
+    let x = distances[i] * cos(angles[i]);
+    let y = distances[i] * sin(angles[i]);
+    angles[i] += speeds[i]; // Increase the angle to make the planet move
+
+    // Draw a sphere representing the planet
+    push();
+    translate(x, y, 0); // Move to the position of the planet
+    fill(255/(i+1), 255/(i+2), 255/(i+3)); // Different color for each planet
+    sphere(diameters[i]); // Draw the planet
+    pop();
+  }
+}
+```
+
+In this sketch, we're using arrays to store the properties of the planets. The `angles` array stores the current angle of each planet, the `diameters` array stores the diameter of each planet, the `distances` array stores the distance of each planet from the sun, and the `speeds` array stores the speed of each planet.
+
+The `draw()` function includes a for loop that iterates over the arrays and draws each planet. The position of each planet is calculated using the `cos()` and `sin()` functions and the corresponding values from the `angles` and `distances` arrays. The `angles[i]` value is increased each frame by the corresponding value from the `speeds` array to make the planet move.
+
+The `translate()` function is used to move to the position of each planet before drawing it, the `fill()` function is used to set a different color for each planet, and the `sphere()` function is used to draw the planet with the diameter from the `diameters` array.
+
+
+---
+
+**Slide 7: Elements of Art/Design - Space**
+
+- **Defining Space**
+  - Definition: Space is the area around, within, or between images or parts of an image related to artistic perspective. It can be 2D, 3D, negative and/or positive.
+  - Role in design: Proper use of space can give a design balance and depth and help highlight important elements.
+
+- **Space in p5.js**
+  - 2D vs 3D space: Discuss how to switch between 2D and 3D space in p5.js using `createCanvas()` with `WEBGL`.
+  - Basic usage: Mention key functions related to spatial perception such as `translate()`, `rotate()`, and `scale()`.
+  - Example: Provide an example of manipulating space in a p5.js sketch to alter viewer's perception.
+
+
+**Concept:**
+- We'll create a canvas with a central shape (positive space).
+- The mouse position will generate ripples around this shape, emphasizing the negative space and creating a sense of depth.
+
+Here's the p5.js sketch:
+
+```javascript
+let ripples = [];
+
+function setup() {
+  createCanvas(400, 400);
+  noFill();
+  strokeWeight(2);
+}
+
+function draw() {
+  background(220);
+  
+  // Central shape (positive space)
+  fill(100);
+  ellipse(width/2, height/2, 100, 100);
+  
+  // Ripples (emphasizing negative space)
+  for (let i = ripples.length - 1; i >= 0; i--) {
+    ripples[i].display();
+    ripples[i].expand();
+    if (ripples[i].isOutside()) {
+      ripples.splice(i, 1);
+    }
+  }
+}
+
+function mousePressed() {
+  ripples.push(new Ripple(mouseX, mouseY));
+}
+
+class Ripple {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.radius = 20;
+  }
+  
+  display() {
+    noFill();
+    stroke(150);
+    ellipse(this.x, this.y, this.radius * 2);
+  }
+  
+  expand() {
+    this.radius += 2;
+  }
+  
+  isOutside() {
+    return this.radius > width;
+  }
+}
+```
+
+In this sketch, the central ellipse represents the positive space, while the expanding ripples emphasize the negative space around it. The interaction allows users to "feel" the space by creating ripples, giving a sense of depth and dimension.
+
+---
+
+**Slide 8: Elements of Art/Design - Texture**
+
+- **Defining Texture**
+  - Definition: Texture refers to the perceived surface quality or feel of an object. In design, texture can be actual (tactile) or visual.
+  - Role in design: It can add depth and detail to designs and can influence the look and feel of a work of art.
+
+- **Texture in p5.js**
+  - Basic usage: Discuss how to load and apply textures in p5.js using `loadImage()` and `texture()`.
+  - Example: Show how to use these functions to apply a texture to a shape in a p5.js sketch.
+
+Texture in art and design refers to the perceived surface quality of a work. It can be actual (tangible, like the surface of a sculpture) or implied (suggested visually, like the roughness of a painted rock). In digital art, we often work with implied textures. Let's craft a p5.js sketch that plays with this concept.
+
+**Concept:**
+- We'll create a canvas where the mouse drag generates a textured brush stroke.
+- The texture will be achieved using random offsets and color variations.
+
+Here's the p5.js sketch:
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+}
+
+function draw() {
+  if (mouseIsPressed) {
+    for (let i = 0; i < 5; i++) {
+      let offsetX = random(-10, 10);
+      let offsetY = random(-10, 10);
+      let col = color(100 + random(-20, 20), 50 + random(-10, 10), 0);
+      fill(col);
+      noStroke();
+      ellipse(mouseX + offsetX, mouseY + offsetY, 10, 10);
+    }
+  }
+}
+```
+
+In this sketch, the texture is achieved by drawing multiple small ellipses with slight offsets and color variations around the mouse position. This creates an implied rough, organic texture as the user drags the mouse.
+
+---
+
+**Slide 9: Design Principles**
+
+- **Defining Design Principles**
+  - Definition: Design principles are the fundamental ideas and elements that help us understand how to create aesthetically pleasing artwork. These include balance, contrast, emphasis, movement, pattern, rhythm, and unity.
+  - Role in design: Understanding these principles helps creators make effective decisions to guide the viewer's eye and maintain visual interest.
+
+- **Applying Design Principles in p5.js**
+  - Example: Show an example of a p5.js sketch that demonstrates one or more design principles. Explain how the design principles are reflected in the sketch.
+
+Here's the breakdown:
+
+- **Balance**: We'll use both symmetrical and asymmetrical elements.
+- **Contrast**: Different shapes, sizes, and colors will provide visual distinction.
+- **Emphasis**: A central element will be the focal point.
+- **Movement**: Animated elements will guide the viewer's eyes.
+- **Pattern**: Repeated elements will create a visual pattern.
+- **Rhythm**: The arrangement and animation will create a visual rhythm.
+- **Unity**: The composition will be cohesive, with elements working together harmoniously.
+
+Given the complexity, I'll break it down into two sketches:
+
+**Sketch 1: Emphasis, Movement, Rhythm, and Unity**
+
+```javascript
+let angle = 0;
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+
+  // Emphasis: Central ellipse as the focal point
+  fill(255, 0, 0);
+  ellipse(width / 2, height / 2, 100, 100);
+
+  // Movement & Rhythm: Rotating ellipses around the central ellipse
+  for (let i = 0; i < TWO_PI; i += PI / 4) {
+    let x = width / 2 + 150 * cos(i + angle);
+    let y = height / 2 + 150 * sin(i + angle);
+    fill(100);
+    ellipse(x, y, 50, 50);
+  }
+
+  angle += 0.02;
+
+  // Unity: All elements have a harmonious relationship
+}
+```
+
+**Sketch 2: Balance, Contrast, Pattern**
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+  background(220);
+
+  // Balance: Symmetrical pattern on both sides
+  for (let i = 0; i < 5; i++) {
+    fill(random(255), random(255), random(255));
+    ellipse(100, 50 + i * 70, 40, 40);
+    ellipse(300, 50 + i * 70, 40, 40);
+  }
+
+  // Contrast: Different colors and sizes for the central ellipses
+  fill(255, 0, 0);
+  ellipse(width / 2, height / 2, 120, 120);
+  fill(0, 0, 255);
+  ellipse(width / 2, height / 2, 80, 80);
+
+  // Pattern: Repeated ellipses create a visual pattern
+}
+```
+
+These sketches combine the design principles to create visually engaging compositions. 
+
+---
+
+**Slide 10: Applying Elements of Art/Design in p5.js**
+
+- **Intersecting Concepts**
+  - Discuss how elements of art/design can be combined for more complex and appealing designs. 
+  - Explain how color, shape, form, value, line, space, and texture can be used in tandem to produce different effects.
+
+- **Practical Examples in p5.js**
+  - Show practical examples of sketches where multiple elements of design are applied.
+  - Discuss how these elements affect the final visual outcome of the sketches.
+
+Let's create a symphony of design elements! Here's the plan:
+
+- **Color**: We'll use a gradient background and color variations for shapes.
+- **Shape & Form**: We'll incorporate both 2D shapes (like ellipses) and imply 3D forms (like spheres using shading).
+- **Value**: We'll use shading and gradients to show light to dark values.
+- **Line**: We'll create lines that respond to mouse movement.
+- **Space**: We'll use both positive and negative space effectively.
+- **Texture**: We'll add a textured background effect.
+
+Here's the p5.js sketch:
+
+```javascript
+let lines = [];
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  // Color & Value: Gradient background
+  for (let i = 0; i <= height; i++) {
+    let inter = map(i, 0, height, 0, 1);
+    let col = lerpColor(color(255, 150, 0), color(0, 50, 150), inter);
+    stroke(col);
+    line(0, i, width, i);
+  }
+
+  // Texture: Random ellipses for a speckled texture
+  for (let i = 0; i < 50; i++) {
+    let x = random(width);
+    let y = random(height);
+    let s = random(1, 3);
+    fill(255, 150);
+    noStroke();
+    ellipse(x, y, s);
+  }
+
+  // Shape: Ellipse & Form: Implied sphere using radial gradient
+  let gradientSize = 100;
+  for (let r = gradientSize; r > 0; r--) {
+    let inter = map(r, 0, gradientSize, 0.1, 1);
+    fill(lerpColor(color(255, 255, 255, 150), color(100, 200, 255, 150), inter));
+    ellipse(width / 4, height / 2, r);
+  }
+
+  // Line: Lines that follow mouse movement
+  if (mouseIsPressed) {
+    lines.push(new DraggableLine(mouseX, mouseY));
+  }
+  for (let line of lines) {
+    line.update();
+    line.display();
+  }
+
+  // Space: Empty space on the right to balance the composition
+}
+
+class DraggableLine {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.xoff = random(1000);
+    this.yoff = random(1000);
+  }
+
+  update() {
+    this.x += map(noise(this.xoff), 0, 1, -1, 1);
+    this.y += map(noise(this.yoff), 0, 1, -1, 1);
+    this.xoff += 0.01;
+    this.yoff += 0.01;
+  }
+
+  display() {
+    stroke(50);
+    point(this.x, this.y);
+  }
+}
+```
+
+This sketch combines all the mentioned elements into a dynamic canvas.
+  
+---
+
+**Slide 11: Advanced Design Capabilities in p5.js**
+
+- **Exploring p5.js Libraries**
+  - Introduce the audience to various libraries in p5.js like p5.sound, p5.play, etc., that provide advanced capabilities for creative coding.
+
+- **Applications**
+  - Provide examples of complex sketches created using these libraries.
+  - Discuss how they extend the design possibilities and provide more creative freedom.
+
+---
+
+**Slide 12: Conclusion and Q&A**
+
+- **Recap**
+  - Summarize the key points discussed throughout the presentation.
+  - Reinforce the importance of understanding and applying elements of art/design in p5.js.
+
+- **Future exploration**
+  - Encourage students to experiment with these elements in their projects.
+  - Suggest additional resources for learning more about creative coding, graphic design, and p5.js.
+
+- **Q&A**
+  - Open the floor for any questions, comments, or discussion points from the students.
+
+
           </md-block>
         </article>
         <article id="Thursday">
           <md-block>
-            
+            ### Design Principles
+
+1. **Slide 1: Introduction**
+   - Briefly revisiting the design principles from the previous class.
+   - Introducing the focus of this class: exploring balance, contrast, repetition, alignment, and proximity in p5.js.
+
+---
+
+2. **Slide 2: Understanding Balance**
+   - Explanation of balance as a principle: the distribution of visual weight in a design.
+   - Discussing symmetrical (formal) balance and asymmetrical (informal) balance.
+   - Showcasing examples of both types of balance in p5.js.
+
+---
+
+3. **Slide 3: Implementing Balance in p5.js**
+   - Discussing methods to achieve balance in a design through the manipulation of shape, color, and texture in p5.js.
+   - Absolutely! Balance is a fundamental principle in art and design, and it's a great topic to explore through interactive sketches. Let's dive into it, hip-hop style, with some p5.js beats.
+
+	**1. Symmetrical (Formal) Balance:**
+	Symmetrical balance is achieved when elements on both sides of a composition are equal in weight. It gives a feeling of stability.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+  noLoop();
+}
+
+function draw() {
+  fill(100);
+  ellipse(width/2, height/2, 100, 100); // Central circle
+  
+  fill(150);
+  ellipse(width/4, height/2, 50, 50);   // Left circle
+  ellipse(3*width/4, height/2, 50, 50); // Right circle
+}
+```
+
+This sketch places a larger circle in the center and two smaller circles equidistant from the center on either side, creating a symmetrical balance.
+
+**2. Asymmetrical (Informal) Balance:**
+Asymmetrical balance is achieved when elements on both sides of a composition are not identical but are still visually balanced. This can be achieved through the use of contrast, color, and positioning.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+  noLoop();
+}
+
+function draw() {
+  fill(100);
+  ellipse(width/4, height/2, 100, 100); // Left circle
+  
+  fill(150);
+  rect(3*width/4 - 25, height/2 - 25, 50, 50); // Right square
+}
+```
+
+In this sketch, a circle on the left and a square on the right create an asymmetrical balance. Even though the shapes are different, their visual weight is balanced due to their sizes and positioning.
+
+**Bonus: Interactive Asymmetrical Balance:**
+Let's make it a bit more interactive. The size of the circle changes based on mouse position, but the visual balance is maintained by adjusting the size of the square on the right.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+}
+
+function draw() {
+  background(220);
+  
+  let circleSize = map(mouseX, 0, width, 50, 150);
+  let squareSize = map(circleSize, 50, 150, 150, 50);
+  
+  fill(100);
+  ellipse(width/4, height/2, circleSize, circleSize); // Left circle
+  
+  fill(150);
+  rect(3*width/4 - squareSize/2, height/2 - squareSize/2, squareSize, squareSize); // Right square
+}
+```
+
+This sketch dynamically adjusts the sizes of the circle and square based on the mouseX position, creating a constantly shifting but balanced composition.
+
+---
+
+4. **Slide 4: Understanding Contrast**
+   - Explanation of contrast as a principle: creating difference between elements to draw visual interest.
+   - Discussing various ways contrast can be implemented (size, color, form).
+   - Showcasing examples of contrast in p5.js.
+
+---
+
+5. **Slide 5: Implementing Contrast in p5.js**
+   - Discussing how contrast can be implemented in p5.js through changing color, form, and size of objects.
+   
+**1. Contrast in Color:**
+A simple sketch showcasing two contrasting colors. When the user clicks, the colors swap, emphasizing the contrast.
+
+```javascript
+let isFlipped = false;
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+  drawContrast();
+}
+
+function drawContrast() {
+  if (isFlipped) {
+    background(255, 0, 0); // Red
+    fill(0, 0, 255);       // Blue
+  } else {
+    background(0, 0, 255); // Blue
+    fill(255, 0, 0);       // Red
+  }
+  ellipse(width/2, height/2, 150, 150);
+}
+
+function mousePressed() {
+  isFlipped = !isFlipped;
+  drawContrast();
+}
+```
+
+**2. Contrast in Size:**
+A sketch that contrasts a large circle and a small circle. The position of the mouse determines the size of the larger circle, emphasizing the size difference.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  
+  let largeCircleSize = map(mouseX, 0, width, 100, 300);
+  
+  fill(100);
+  ellipse(width/4, height/2, largeCircleSize, largeCircleSize); // Large circle
+  
+  fill(150);
+  ellipse(3*width/4, height/2, 50, 50); // Small circle
+}
+```
+
+**3. Contrast in Shape:**
+A sketch contrasting a circle and a square. The user can drag the mouse to change the size of the square, emphasizing the difference in shapes.
+
+```javascript
+let squareSize = 100;
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  
+  fill(100);
+  ellipse(width/4, height/2, 150, 150); // Circle
+  
+  fill(150);
+  rectMode(CENTER);
+  rect(3*width/4, height/2, squareSize, squareSize); // Square
+}
+
+function mouseDragged() {
+  squareSize = dist(mouseX, mouseY, 3*width/4, height/2) * 2;
+}
+```
+
+---
+
+6. **Slide 6: Understanding Repetition, Alignment, and Proximity**
+   - Explanation of repetition, alignment, and proximity as design principles.
+   - Repetition strengthens a design by tying together individual elements.
+   - Alignment creates a clean, sophisticated, fresh look.
+   - Proximity helps in creating a relationship between similar or related elements.
+   - Showcasing examples of these principles in design and p5.js.
+
+---
+
+7. **Slide 7: Implementing Repetition, Alignment, and Proximity in p5.js**
+   - Discussing the use of loops for repetition, alignment properties for precise placement of objects, and using proximity in managing space between elements in p5.js.
+
+Repetition:
+
+**1. Simple Repetition:**
+A basic sketch showcasing repetition with circles in a row.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+  noLoop();
+  
+  fill(100);
+  for (let i = 0; i < 5; i++) {
+    ellipse(50 + i * 70, height/2, 50, 50);
+  }
+}
+```
+
+**2. Repetition with Variation:**
+Repeating shapes, but with a twist. The size of each circle increases as you move from left to right.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+  noLoop();
+  
+  fill(150);
+  for (let i = 0; i < 5; i++) {
+    ellipse(50 + i * 70, height/2, 30 + i * 20, 30 + i * 20);
+  }
+}
+```
+
+**3. Interactive Repetition:**
+A sketch where the user's mouse position determines the number of repeated shapes.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  
+  let numShapes = map(mouseX, 0, width, 5, 20);
+  
+  fill(100);
+  for (let i = 0; i < numShapes; i++) {
+    ellipse(20 + i * (width / numShapes), height/2, 20, 20);
+  }
+}
+```
+
+**4. Repetition in Grid:**
+Repeating shapes in a 2D grid pattern.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+  noLoop();
+  
+  fill(150);
+  for (let x = 0; x < 5; x++) {
+    for (let y = 0; y < 5; y++) {
+      ellipse(40 + x * 70, 40 + y * 70, 30, 30);
+    }
+  }
+}
+```
+
+Alignment:
+
+**1. Left Alignment:**
+A basic sketch showcasing text and shapes aligned to the left.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+  noLoop();
+  
+  fill(100);
+  textAlign(LEFT);
+  textSize(24);
+  text("Left Align", 50, 50);
+  rect(50, 70, 100, 50);
+}
+```
+
+**2. Center Alignment:**
+Text and shapes aligned to the center of the canvas.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+  noLoop();
+  
+  fill(150);
+  textAlign(CENTER, CENTER);
+  textSize(24);
+  text("Center Align", width/2, height/2 - 30);
+  ellipse(width/2, height/2 + 30, 100, 100);
+}
+```
+
+**3. Right Alignment:**
+Text and shapes aligned to the right side of the canvas.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+  noLoop();
+  
+  fill(200);
+  textAlign(RIGHT);
+  textSize(24);
+  text("Right Align", width - 50, 50);
+  rect(width - 150, 70, 100, 50);
+}
+```
+
+**4. Interactive Alignment:**
+A sketch where the user's mouse position determines the alignment of shapes and text.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  
+  fill(100);
+  if (mouseX < width/3) {
+    textAlign(LEFT);
+    text("Left Align", 50, 50);
+    rect(50, 70, 100, 50);
+  } else if (mouseX > 2 * width/3) {
+    textAlign(RIGHT);
+    text("Right Align", width - 50, 50);
+    rect(width - 150, 70, 100, 50);
+  } else {
+    textAlign(CENTER, CENTER);
+    text("Center Align", width/2, height/2 - 30);
+    ellipse(width/2, height/2 + 30, 100, 100);
+  }
+}
+```
+
+Proximity
+
+**1. Grouping Related Elements:**
+A basic sketch showcasing circles grouped together to represent a related set.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+  noLoop();
+  
+  fill(100);
+  for (let i = 0; i < 3; i++) {
+    ellipse(70 + i * 40, height/4, 30, 30);
+  }
+  
+  fill(150);
+  for (let i = 0; i < 3; i++) {
+    ellipse(70 + i * 40, 3*height/4, 30, 30);
+  }
+}
+```
+
+**2. Spacing to Indicate Relationships:**
+A sketch showcasing the use of spacing to indicate which text is related to which shape.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+  noLoop();
+  
+  fill(100);
+  textAlign(LEFT);
+  textSize(24);
+  text("Related to Circle", 150, height/4);
+  ellipse(70, height/4, 50, 50);
+  
+  fill(150);
+  text("Related to Square", 150, 3*height/4);
+  rect(50, 3*height/4 - 25, 50, 50);
+}
+```
+
+**3. Interactive Proximity:**
+A sketch where the user's mouse position determines the proximity of shapes, emphasizing their relationship.
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  
+  let spacing = map(mouseX, 0, width, 20, 100);
+  
+  fill(100);
+  ellipse(width/4, height/2, 50, 50);
+  ellipse(width/4 + spacing, height/2, 50, 50);
+  
+  fill(150);
+  rect(3*width/4, height/2 - 25, 50, 50);
+  rect(3*width/4 + spacing, height/2 - 25, 50, 50);
+}
+```
+
+
+Repetition, Alignment, Proximity
+
+**Concept:**
+- We'll create rows of circles (repetition).
+- The number of circles in each row will be determined by the mouseY position (proximity: more circles means they're closer together).
+- The alignment of each row (left, center, right) will be determined by which third of the canvas the mouseX is in (alignment).
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  
+  let numRows = 5;
+  let rowHeight = height / numRows;
+  
+  for (let i = 0; i < numRows; i++) {
+    drawRow(i * rowHeight + rowHeight / 2);
+  }
+}
+
+function drawRow(yPos) {
+  let numCircles = int(map(mouseY, 0, height, 3, 10));
+  let spacing = width / (numCircles + 1);
+  
+  fill(100);
+  
+  if (mouseX < width / 3) { // Left alignment
+    for (let i = 0; i < numCircles; i++) {
+      ellipse(spacing * (i + 1), yPos, 20, 20);
+    }
+  } else if (mouseX > 2 * width / 3) { // Right alignment
+    for (let i = 0; i < numCircles; i++) {
+      ellipse(width - spacing * (numCircles - i), yPos, 20, 20);
+    }
+  } else { // Center alignment
+    let totalWidth = numCircles * spacing;
+    let startX = (width - totalWidth) / 2;
+    for (let i = 0; i < numCircles; i++) {
+      ellipse(startX + spacing * i, yPos, 20, 20);
+    }
+  }
+}
+```
+
+---
+
+8. **Slide 8: Bringing It All Together**
+   - Showcasing a complete design that incorporates all the discussed principles.
+   - Discussing how balance, contrast, repetition, alignment, and proximity work together in a design.
+
+**Concept:**
+- **Balance**: We'll use both symmetrical and asymmetrical elements.
+- **Contrast**: Different shapes and colors will provide visual distinction.
+- **Repetition**: Multiple rows of shapes will be displayed.
+- **Alignment**: Shapes will align based on mouseX position.
+- **Proximity**: The distance between shapes will vary based on mouseY position.
+
+Here's the p5.js sketch:
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  
+  let numRows = 5;
+  let rowHeight = height / numRows;
+  
+  for (let i = 0; i < numRows; i++) {
+    drawRow(i * rowHeight + rowHeight / 2, i);
+  }
+}
+
+function drawRow(yPos, rowIndex) {
+  let numShapes = int(map(mouseY, 0, height, 3, 7));
+  let spacing = width / (numShapes + 1);
+  
+  let alignmentOffset;
+  if (mouseX < width / 3) {
+    alignmentOffset = 0; // Left alignment
+  } else if (mouseX > 2 * width / 3) {
+    alignmentOffset = width - numShapes * spacing; // Right alignment
+  } else {
+    alignmentOffset = (width - numShapes * spacing) / 2; // Center alignment
+  }
+  
+  for (let i = 0; i < numShapes; i++) {
+    let x = alignmentOffset + spacing * i;
+    
+    // Contrast & Balance
+    if (rowIndex % 2 === 0) {
+      fill(100);
+      ellipse(x, yPos, 20, 20);
+    } else {
+      fill(150);
+      rect(x - 10, yPos - 10, 20, 20);
+    }
+  }
+}
+```
+
+---
+
+9. **Slide 9: Activity**
+   - Assigning an activity where students have to create a design using all these principles in p5.js.
+
+---
+
+10. **Slide 10: Recap and Q&A**
+   - Recap of the main points from the lecture.
+   - Open floor for Q&A. 
           </md-block>
         </article>
       </div>
@@ -79,7 +1303,9 @@
 </div>
 <script src="../../../js/bootstrap.bundle.min.js"></script>
 <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js"></script>
+<script src="../../../js/10print.js"></script>
+</div>
     </body>
 
 </html>
