@@ -174,7 +174,7 @@ footer p {
 /* Grain Background */
 
 h1 {
-    font-size: 1.5em;
+    font-size: 1em;
     line-height: 1em;
     color: #232323;
 }
@@ -191,3 +191,55 @@ h2 {
     font-size: 1em;
     line-height: 1em;
 }
+
+#creditsModal .modal-content {
+  background-color: #fdfdfd;
+  box-shadow: 5px 5px 0px black;
+}
+
+#creditsModal .modal-header, 
+#creditsModal .modal-footer {
+  background-color: #f4f4f4;
+}
+
+#creditsModal .modal-title {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+#creditsModal .modal-body {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #333;
+}
+
+#creditsModal .modal-body a {
+  color: #0000EE;
+  text-decoration: underline;
+}
+
+#creditsModal .modal-footer .btn {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  background-color: #dcdcdc;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+header h1 {
+  font-size: 24px;
+}
+
+/* Remove Bootstrap's default styling on modals */
+.modal-content {
+  border: none; /* Remove Bootstrap's default border */
+  box-shadow: none; /* Remove default box shadow */
+}
+
+/* Custom styles for modal content */
+.modal-content {
+  border: 3px solid black; /* Your custom border */
+  background-color: #fdfdfd; /* Light background */
+  box-shadow: 5px 5px 0px black; /* Custom shadow */
+}
+

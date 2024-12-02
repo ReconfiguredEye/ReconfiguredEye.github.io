@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.122.0">
+
     <title>colby jennings | on the web</title>
 
 
@@ -20,6 +19,111 @@
     <link rel="stylesheet" href="../css/main.css">
 
     <link rel="stylesheet" href="https://use.typekit.net/wbv1pwa.css">
+
+    <style>
+        body {
+          background-color: #eaeaea;
+          height: 200vh;
+          position: relative;
+          overflow-x: hidden;
+          margin: 0;
+          padding: 0;
+        }
+        body .grain {
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          pointer-events: none; /* This should remain none */
+          z-index: 300;
+          transform: translateZ(0);
+        }
+
+body .grain:before {
+  content: "";
+  top: -10rem;
+  left: -10rem;
+  width: calc(100% + 20rem);
+  height: calc(100% + 20rem);
+  z-index: 9999;
+  position: fixed;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
+  opacity: 0.12;
+  pointer-events: none; /* This should also remain none */
+  -webkit-animation: noise 1s steps(2) infinite;
+  animation: noise 1s steps(2) infinite;
+}
+
+a {
+  z-index: 1000; /* Ensure links have a higher z-index than the grain */
+  position: relative; /* Make sure the z-index applies */
+}
+        @-webkit-keyframes noise {
+          to {
+            transform: translate3d(-7rem, 0, 0);
+          }
+        }
+        @keyframes noise {
+          0% {
+            transform: translate3d(0, 9rem, 0);
+          }
+          10% {
+            transform: translate3d(-1rem, -4rem, 0);
+          }
+          20% {
+            transform: translate3d(-8rem, 2rem, 0);
+          }
+          30% {
+            transform: translate3d(9rem, -9rem, 0);
+          }
+          40% {
+            transform: translate3d(-2rem, 7rem, 0);
+          }
+          50% {
+            transform: translate3d(-9rem, -4rem, 0);
+          }
+          60% {
+            transform: translate3d(2rem, 6rem, 0);
+          }
+          70% {
+            transform: translate3d(7rem, -8rem, 0);
+          }
+          80% {
+            transform: translate3d(-9rem, 1rem, 0);
+          }
+          90% {
+            transform: translate3d(6rem, -5rem, 0);
+          }
+          to {
+            transform: translate3d(-7rem, 0, 0);
+          }
+        }
+        body h1, body h2 {
+          margin: 75px auto;
+          padding: 0;
+          width: 95vw;
+        }
+        body h2 {
+          margin: 50px auto;
+          padding: 0;
+          width: 95vw;
+     
+        }
+        body .image {
+          position: fixed;
+          top: 0;
+          right: 0;
+          height: 100vh;
+          width: 50vw;
+          background-image: url(https://images.unsplash.com/photo-1598382570113-48c8e44737b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3648&q=80);
+          background-size: cover;
+          background-position: center;
+          filter: grayscale(100%);
+          opacity: 0.2;
+          z-index: -500;
+        }
+        </style>
     
   </head>
   <body>
@@ -42,16 +146,45 @@
       </div>
 
       <div class="col-md-6">
-        <a href="classroomIndex.html"><h2>.classroom</h2></a>
-        <a href="classroomIndex.html"><img src="../portfolio/images/tv_005.png" width="450px"></a>
+        <a href ="../_oldSite/teaching.html"><h2>.classroom</h2></a>
+        <a href="../_oldSite/teaching.html"><img src="../portfolio/images/tv_005.png" width="450px"></a>
         
       </div>
     </div>
   </main>
   <footer class="pt-5 my-5 text-body-secondary">
-    <p>font sourced from Adobe Fonts</p>
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#creditsModal">
+      thanks to...
+    </button>
   </footer>
 </div>
+
+<!-- Modal Structure -->
+<div class="modal fade" id="creditsModal" tabindex="-1" aria-labelledby="creditsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border: 3px solid black; background-color: #fdfdfd; box-shadow: 5px 5px 0px black;">
+      <div class="modal-header" style="border-bottom: 2px solid black; background-color: #f4f4f4;">
+        <h5 class="modal-title" id="creditsModalLabel" style="font-family: 'Courier New', monospace; font-size: 14px;">
+          thanks to...
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: grayscale(100%);"></button>
+      </div>
+      <div class="modal-body" style="font-family: 'Courier New', monospace; font-size: 16px; color: #333;">
+        <ul style="list-style-type: square; margin-left: 20px;">
+          <li>Font sourced from <a href="https://fonts.adobe.com/" target="_blank" style="color: #0000EE; text-decoration: underline;">Adobe Fonts</a></li>
+          <li>Background image by <a href="https://unsplash.com/" target="_blank" style="color: #0000EE; text-decoration: underline;">Unsplash</a></li>
+          <li>Icons and other resources sourced from Bootstrap and open-source libraries.</li>
+        </ul>
+      </div>
+      <div class="modal-footer" style="border-top: 2px solid black; background-color: #f4f4f4;">
+        <button type="button" class="btn" data-bs-dismiss="modal">
+          close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="../js/bootstrap.bundle.min.js"></script>
 
     </body>

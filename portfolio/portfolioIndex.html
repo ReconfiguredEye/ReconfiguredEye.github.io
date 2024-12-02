@@ -1,59 +1,132 @@
 <!doctype html>
-<html lang="en" data-bs-theme="auto">
-  <head><script src="../assets/js/color-modes.js"></script>
-
+<html lang="en">
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.122.0">
-    <title>colby jennings | on the web</title>
-
-
-
-    
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-
+    <title>Research - Coming Soon</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="../css/main.css">
-
-    <link rel="stylesheet" href="https://use.typekit.net/wbv1pwa.css">
-
-    
+    <style>
+      body {
+        font-family: 'Courier New', monospace;
+        background-color: #f4f4f4;
+        text-align: center;
+        padding: 50px;
+        position: relative;
+        overflow: hidden;
+      }
+      .grain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        pointer-events: none; /* Prevent interaction with the texture */
+        z-index: 1;
+        transform: translateZ(0);
+      }
+      .grain:before {
+        content: "";
+        top: -10rem;
+        left: -10rem;
+        width: calc(100% + 20rem);
+        height: calc(100% + 20rem);
+        z-index: 9999;
+        position: fixed;
+        background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
+        opacity: 0.12; /* Adjust for subtlety */
+        pointer-events: none;
+        -webkit-animation: noise 1s steps(2) infinite;
+        animation: noise 1s steps(2) infinite;
+      }
+      @-webkit-keyframes noise {
+        to {
+          transform: translate3d(-7rem, 0, 0);
+        }
+      }
+      @keyframes noise {
+        0% {
+          transform: translate3d(0, 9rem, 0);
+        }
+        10% {
+          transform: translate3d(-1rem, -4rem, 0);
+        }
+        20% {
+          transform: translate3d(-8rem, 2rem, 0);
+        }
+        30% {
+          transform: translate3d(9rem, -9rem, 0);
+        }
+        40% {
+          transform: translate3d(-2rem, 7rem, 0);
+        }
+        50% {
+          transform: translate3d(-9rem, -4rem, 0);
+        }
+        60% {
+          transform: translate3d(2rem, 6rem, 0);
+        }
+        70% {
+          transform: translate3d(7rem, -8rem, 0);
+        }
+        80% {
+          transform: translate3d(-9rem, 1rem, 0);
+        }
+        90% {
+          transform: translate3d(6rem, -5rem, 0);
+        }
+        to {
+          transform: translate3d(-7rem, 0, 0);
+        }
+      }
+      .construction-container {
+        position: relative;
+        max-width: 600px;
+        margin: 50px auto;
+        border: 3px dashed #333;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 5px 5px 0px #999;
+        z-index: 2; /* Ensure content is above the texture */
+      }
+      .construction-title {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      .construction-subtitle {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 20px;
+      }
+      .gif-container {
+        margin-bottom: 20px;
+      }
+      .gif-container img {
+        max-width: 100%;
+        height: auto;
+      }
+      .construction-footer {
+        font-size: 14px;
+        color: #777;
+      }
+      a {
+        color: #0000EE;
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
-<div class="grain"></div>
-
-<div class="col-lg-10 mx-auto p-4 py-md-5">
-  <header class="d-flex align-items-center">
-  
-        <h1><a href="https://reconfiguredeye.github.io">colby jennings</a></h1>
-      
-  </header>
-  <main>
-
-    <div class="row">
-      <div class="col-md-6">
-        <a href="portfolioIndex.html"><h2>.research</h2></a>
-        <a href="portfolioIndex.html"><img src="images/tv_006.png" width="450px"></a> 
-  
-        
+    <div class="grain"></div>
+    <div class="construction-container">
+      <div class="construction-title">🚧 Research Ahead 🚧</div>
+      <div class="construction-subtitle">please stand by while the experience is optimized... until then, enjoy this gif by <a href="https://www.ryanseslow.com/">Ryan Seslow</a></div>
+      <div class="gif-container">
+        <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzBuMXF2dXhheXJwdG8zdTIzM2hwanA5MGRmNGVpNjdsc2ZycTh3OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2QZVIeuejkQ83SQE/giphy.gif" alt="Under Construction GIF">
       </div>
-
-      <div class="col-md-6">
-        <a href ="../classroom/classroomIndex.html"><h2>.classroom</h2></a>
-        <a href="../classroom/classroomIndex.html"><img src="images/tv_005.png" width="450px"></a>
-        
+      <div class="construction-footer">
+        back to <a href="https://reconfiguredeye.github.io">my homepage</a>.
       </div>
     </div>
-  </main>
-  <footer class="pt-5 my-5 text-body-secondary">
-    <p>font sourced from Adobe Fonts</p>
-  </footer>
-</div>
-<script src="../js/bootstrap.bundle.min.js"></script>
-
-    </body>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
