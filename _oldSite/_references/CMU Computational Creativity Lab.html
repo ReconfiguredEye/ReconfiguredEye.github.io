@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://computational-creativity.org/#folios -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>CMU Computational Creativity Lab</title>
+
+	
+	<meta property="og:site_name" content="CMU Computational Creativity Lab"> 
+  	<meta property="og:description" content="At CCL, We are informed by Computational Design Thinking in our approach to understanding complex systems and imagining preferred futures."> 
+  	<meta name="description" content="At CCL, We are informed by Computational Design Thinking in our approach to understanding complex systems and imagining preferred futures.">
+
+  	<meta name="title" content="CMU Computational Creativity Lab">
+  	<meta property="og:title" content="CMU Computational Creativity Lab">
+  	<meta property="og:image" content="./img/ccl_meta.png">
+	<meta property="og:image:url" content="./img/ccl_meta.png">
+	<meta property="og:image:secure_url" content="./img/ccl_meta.png">
+
+  	<link rel="canonical" href="https://computationalcreativity.cc/">
+  	<meta property="og:url" content="https://computationalcreativity.cc">
+  	<meta property="og:type" content="website">
+  	<meta property="og:locale" content="en_US">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	
+	<link rel="stylesheet" type="text/css" href="./CMU Computational Creativity Lab_files/style.css">
+	<style>
+		@font-face {
+	    font-family: 'ModeratLig';
+	    src: url('./css/font/Moderat-Light.eot');
+	    src: url('./css/font/Moderat-Light.woff') format('woff'),
+	    url('./css/font/Moderat-Light.woff2') format('woff2');
+		}
+
+		@font-face {
+		    font-family: 'ModeratReg';
+		    src: url('./css/font/Moderat-Regular.eot');
+		    src: url('./css/font/Moderat-Regular.woff') format('woff'),
+		    url('./css/font/Moderat-Regular.woff2') format('woff2');
+		}
+	</style>
+	<link rel="icon" media="all" type="image/x-icon" href="http://computational-creativity.org/favicon.ico">
+	<link rel="icon" media="all" type="image/vnd.microsoft.icon" href="http://computational-creativity.org/favicon.ico">
+	<script src="./CMU Computational Creativity Lab_files/p5.js.download" type="text/javascript"></script>
+    <script src="./CMU Computational Creativity Lab_files/p5.dom.js.download" type="text/javascript"></script>
+    <script src="./CMU Computational Creativity Lab_files/sketch.js.download" type="text/javascript"></script>
+    <script type="text/javascript">
+    var play = 1;
+    var pr = 0, cr = 0, txt="CMU Computational Creativity Lab", s = 0, st = 0;
+    var selected = [0,0,0];
+	var mobile = isMobile();
+	var titles = [];
+
+	setTimeout(() => {
+	  document.getElementById("navm").style.opacity = 1; console.log("hi");
+	}, 1000);
+
+    function defaults(){
+    	hideAll();
+    	document.getElementById("menu").style.opacity = 1;
+    	document.getElementById("menu").style.color = '#ddd';
+    	document.getElementById("work").style.display = 'block';
+    	document.getElementById("workbn").style.borderBottom = '2px solid';
+    	setTimeout(function() { 
+				document.getElementById("work").style.transform = 'translateY(-20px)';
+		}, 200);
+
+    	if(!mobile){
+    		rearrangeThumbs();
+	    	window.onresize = rearrangeThumbs;
+    	}
+    }
+
+/*
+    function draw(){
+    	if(frameCount == 1){
+	    	for (var i = 0; i < 6; i++) {
+	    		titles.push(new Title("#p"+i));
+	    	}
+    	}
+    	if(frameCount > 2){
+	    	for (var i = 0; i < titles.length; i++) {
+	    		titles[i].generate();
+	    	}
+    	}
+    }
+
+    class Title {
+	  	constructor(id) {
+	  		this.id = id;
+	  		this.div = select(this.id);
+	  		this.content = select(id).elt.innerText; //
+	  		this.contents = this.content.split("");
+	  		this.t = "";
+	  		this.counter = int(random(0, 30));
+		  }
+		  generate(){
+	    	for (var i = 0; i < this.contents.length; i++) {
+				  if((frameCount-this.counter-1) % this.contents.length == i && frameCount-1 < this.contents.length+this.counter) {
+				  	if(this.contents[frameCount-this.counter-1] != undefined && this.contents[frameCount-this.counter-1] != null) this.t += this.contents[frameCount-this.counter-1];
+				  	this.div.elt.innerText = this.t;
+					}
+				}
+	    }
+		}
+*/
+    function rearrangeThumbs() {
+      for(var i=0; i<6; i++){
+		    var rsize = ran(4, 7)*40+"px";
+		    document.getElementById("thumb_"+i).style.maxWidth = rsize;
+		    mw = document.getElementById("menu").clientWidth;
+		    m1 = (window.innerWidth-mw)*.5-ran(4, 7)*40;
+		    m2 = (window.innerWidth+mw)*.5+ran(0, 4)*40-100;
+		    document.getElementById("thumb_"+i).style.top = ran(window.innerHeight*.2, window.innerHeight*.8)+"px";
+		    if(ran(1, 10)<5) document.getElementById("thumb_"+i).style.left = m1+"px";
+		    else document.getElementById("thumb_"+i).style.left = m2+"px";
+	  	}
+		}
+
+		function ran(a, b) {
+		  return Math.floor(Math.random() * Math.abs(b-a) + a);
+		}
+
+    function func(v){
+    	hideAll();
+    	console.log(v);
+    	document.getElementById(v).style.display = 'block';
+    	document.getElementById(v+"bn").style.borderBottom = '2px solid';
+    	document.getElementById("contact_img").style.transition = "all 0s";
+    	document.getElementById("contact_img").style.transform = 'translate(0, -20px)';
+    	document.getElementById("contact_img").style.opacity = 0;
+    	document.getElementById("contact_img").style.transition = "all 0s ease"; 
+    	if(v=="work") work();
+    	if(v=="people") people();
+    	if(v=="contact") contact();
+    }
+
+    function contact(){
+    	document.getElementById("contact_img").style.opacity = 1;
+    	document.getElementById("contact_img").style.transform = 'translate(0, 0px)';
+    }
+
+    function main(){
+    	hideAll();
+    }  
+
+    function show(v){
+    	document.getElementById("folios").style.display = 'block';
+    	for(var i=0; i<6; i++){
+    		document.getElementById("work"+i).style.display = 'none';
+    	}
+			if(v<=3) document.getElementById("work"+v).style.display = 'block';
+		}
+		function over(v){
+			if(v<=3 && !mobile) {
+				document.getElementById("thumb_"+v).style.transition = 'opacity 8s ease, transform 2s ease';
+				document.getElementById("thumb_"+v).style.visibility = 'visible';
+				document.getElementById("thumb_"+v).style.transform = 'scale(2)';
+				document.getElementById("thumb_"+v).style.opacity = 0.5;
+			}
+		}
+		function out(v){
+			if(v<=3 && !mobile) {
+			document.getElementById("thumb_"+v).style.transition = 'opacity 1s ease, transform 0s ease';
+			document.getElementById("thumb_"+v).style.visibility = 'hidden';
+			document.getElementById("thumb_"+v).style.opacity = 0;
+			document.getElementById("thumb_"+v).style.transform = 'scale(1)';
+			}
+		}
+    function hideAll(){
+    	document.getElementById("people").style.display = 'none';
+    	document.getElementById("work").style.display = 'none';
+    	document.getElementById("contact").style.display = 'none';
+    	document.getElementById("peoplebn").style.borderBottom = 'none';
+    	document.getElementById("workbn").style.borderBottom = 'none';
+    	document.getElementById("contactbn").style.borderBottom = 'none';
+    	for(var i=0; i<6; i++){
+    		document.getElementById("work"+i).style.display = 'none';
+    	}
+    	if(mobile){
+    		document.getElementById("menu").style.padding = '160px 0';
+    	}
+    }
+    function scrollCheck(){
+    	var scy = window.scrollY;
+
+    	if(scy>50) {
+    		document.getElementById("svg").style.opacity = 0;
+    		document.getElementById("svg").style.transform = 'translate(0, -10px)';
+    		for(var i=0; i<6; i++){
+    			document.getElementById("thumb_"+i).style.transform = 'translate(0, -10px)';
+    		}
+    	}
+    	else {
+    		document.getElementById("svg").style.opacity = 1;
+    		document.getElementById("svg").style.transform = 'translate(0, 0px)';
+    	}
+    }
+    function isMobile() {
+	  let check = false;
+	  (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
+	  return check;
+	};
+    </script>
+</head>
+
+<body onload="defaults();" onscroll="scrollCheck();" oncontextmenu="return false" class="noselect">
+		<div id="bg"><canvas id="defaultCanvas0" style="width: 2560px; height: 1440px;" width="5120" height="2880"></canvas></div>
+		<div id="thumb_0" style="max-width: 200px; top: 613px; left: 980.5px; transition: opacity 1s ease 0s, transform 0s ease 0s; visibility: hidden; transform: translate(0px, -10px); opacity: 0;"><img src="./CMU Computational Creativity Lab_files/btn_3.png" class="limg"></div>
+		<div id="thumb_1" style="max-width: 160px; top: 941px; left: 980.5px; transition: opacity 1s ease 0s, transform 0s ease 0s; visibility: hidden; transform: scale(1); opacity: 0;"><img src="./CMU Computational Creativity Lab_files/libraries_0.png" class="limg"></div>
+		<div id="thumb_2" style="max-width: 160px; top: 747px; left: 980.5px; transition: opacity 1s ease 0s, transform 0s ease 0s; visibility: hidden; transform: translate(0px, -10px); opacity: 0;"><img src="./CMU Computational Creativity Lab_files/type_amenity.png" class="limg"></div>
+		<div id="thumb_3" style="max-width: 200px; top: 755px; left: 80.5px; transition: opacity 1s ease 0s, transform 0s ease 0s; visibility: hidden; transform: scale(1); opacity: 0;"><img src="./CMU Computational Creativity Lab_files/whatsyourtype_0_s.png" class="limg"></div>
+		<div id="thumb_4" style="max-width: 200px; top: 556px; left: 80.5px; transform: translate(0px, -10px);"><img src="./CMU Computational Creativity Lab_files/btn_3.png" class="limg"></div>
+		<div id="thumb_5" style="max-width: 200px; top: 794px; left: 80.5px; transform: translate(0px, -10px);"><img src="./CMU Computational Creativity Lab_files/btn_3.png" class="limg"></div>
+		 
+
+		<div class="logo">
+			<a href="http://computational-creativity.org/">
+			<img src="./CMU Computational Creativity Lab_files/ccl.svg" class="logo lsvg" width="180px" id="svg" style="opacity: 1; transform: translate(0px, 0px);">
+			<img src="./CMU Computational Creativity Lab_files/ccl_s.svg" class="logo ssvg" width="220px">
+			</a>
+		</div>
+
+		<div class="nav mt" id="navm" style="opacity: 1;">
+			<span onmousedown="func(&#39;work&#39;)" id="workbn" class="mbtn" style="border-bottom: 2px solid;">Work</span>
+			<span onmousedown="func(&#39;people&#39;)" id="peoplebn" class="mbtn" style="border-bottom: none;">People</span>
+			<span onmousedown="func(&#39;contact&#39;)" id="contactbn" class="mbtn" style="border-bottom: none;">Contact</span>
+			<br>
+		</div> 
+
+		<div id="menu" style="opacity: 1; color: rgb(221, 221, 221);">	
+				<div id="work" style="display: block; transform: translateY(-20px);">
+					The Computational Creativity Lab (2015-2022) within CMU's School of Design is a research initiative using computational processes and methods to explore creativity. Reflecting on the integration of code/programming and creativity, we recognize that there is a dearth of research and practice that stem from an understanding of code as a creative medium for designing systems. Rather than just a means, computation is both process and material that drive creativity. We have worked on explorative and client-based projects that entail ideating futures through experimentation with emerging technologies, building generative systems for human interaction, and curating data for collaborative and communal spaces. 
+					<br><br>
+				    -<br>
+				    <div class="folioset">
+				    <!-- will be updated <span id="moving">soon</span><br> -->
+				    Our recent and on-going projects are <br>
+				    <!--Transmedia Storytelling for New Sun Rising-->
+				    <a href="http://computational-creativity.org/#folios" id="p0" class="folio" onmouseover="over(&#39;0&#39;)" onmouseout="out(&#39;0&#39;)" onmousedown="show(&#39;0&#39;)">Behind the Numbers</a><br>
+
+					<a href="http://computational-creativity.org/#folios" id="p1" class="folio" onmouseover="over(&#39;1&#39;)" onmouseout="out(&#39;1&#39;)" onmousedown="show(&#39;1&#39;)">Libraries Need Diverse Books</a> <br>
+<!--
+					<a href="#folios" id="p2" class="folio" onmousedown="show('2')">
+				    Social AR for CMU Commencement 2021</a>, 
+-->
+				    <a href="http://computational-creativity.org/#folios" id="p2" class="folio" onmouseover="over(&#39;2&#39;)" onmouseout="out(&#39;2&#39;)" onmousedown="show(&#39;2&#39;)">Typefaces and Socioeconomic Patterns</a> <br>
+
+					<a href="http://computational-creativity.org/#folios" id="p3" class="folio" onmouseover="over(&#39;3&#39;)" onmouseout="out(&#39;3&#39;)" onmousedown="show(&#39;3&#39;)">What's Your Type?</a> <br>
+
+					<a href="http://computational-creativity.org/#folios" id="p4" class="folio_" onmouseover="over(&#39;4&#39;)" onmouseout="out(&#39;4&#39;)" onmousedown="show(&#39;4&#39;)">Emotion Beyond Emoji</a><br>
+
+					<a href="http://computational-creativity.org/#folios" id="p5" class="folio_" onmouseover="over(&#39;5&#39;)" onmouseout="out(&#39;5&#39;)" onmousedown="show(&#39;5&#39;)">AIGA Design Educators Survey</a> 
+					<br><br>
+				</div>
+
+				<div id="folios" style="display: block;">
+					<div id="work0" style="display: none;">
+						<div class="title">Behind the Numbers</div>
+						<hr>
+						<div class="des">
+							<br>
+							<div>
+							Fall 2021 | 12 Weeks<br>
+							<br>
+							In Collaboration with<br>
+							<a href="https://www.census.gov/" target="_blank">The US Census Bureau</a><br>
+							<br>
+							</div>
+							<br>
+						We sought new ways to present Census data on an urgent, but often unseen, issue in the United States: food insecurity. While Census data undoubtedly proves the scope and characteristics of hunger in the United States, it can obscure the lived experience for each one of the 49 million households that are food insecure. Our project aims to surface these stories, combining a data-driven national level picture of food security with the first person accounts of hunger from everyday Americans. By combining the power of storytelling and data, we aim to create a participatory platform where users can submit their own stories, reflections, and reactions on the issue of food insecurity, continuously enriching the content and surfacing new stories.
+						</div><br><br>
+						<img src="./CMU Computational Creativity Lab_files/btn_1.png" class="body_img"><br><br>
+						<img src="./CMU Computational Creativity Lab_files/btn_2.png" class="body_img"><br><br>
+						<img src="./CMU Computational Creativity Lab_files/btn_3.png" class="body_img"><br>
+					</div>
+
+					<div id="work1" style="display: none;">
+						<div class="title">Libraries Need Diverse Books</div>
+						<hr>
+						<div class="des">
+							<br>
+							<div>
+							Fall 2021 | 12 Weeks<br>
+							<br>
+							In Collaboration with<br>
+							<a href="https://www.census.gov/" target="_blank">The US Census Bureau</a><br>
+							<br>
+							</div>
+							<br>
+					<!--
+						The everyday consumption and production of data by machines, people and organizations have created voluminous data sets. While there are various analytic software and techniques to extract information, big data is often too large and complex for individuals to mine and customize for information that relevant to their needs. <i>How can human-centered design methods be utilized to help professionals apply big data in their practice?</i> Working with local librarians in Pittsburgh, PA, we designed a diversity framework based on US Decennial Census Data to help them make informed decisions when diversifying their collection of books. During the research phase, we discovered a need for a data-fication system that classifies books based on a diversity criteria. We built a participatory system of data collection in the form of a set of questions, to invite participants to assess and submit the diversity level of a book. The outcome is a visualization of the data that was collected to show all the diversity levels.
+					-->
+							Working with the US Census Bureau, the Computational Creativity Lab was tasked with using Decennial Census Data to create tools that advance the Bureau’s diversity, equity, and inclusion goals. Speaking with local librarians in Pittsburgh, PA, we learned that efforts to diversify library collections are often stalled by poor data collection. Librarians often have no way of evaluating how diverse their library’s collections are, or where there might be underrepresented authors. To address this need, we built a participatory data collection system where participants are invited to answer a series of questions which evaluate a book along certain diversity criteria. The outcome is a visualization of the data that was collected to show all the diversity criteria.
+						</div><br><br>
+						<img src="./CMU Computational Creativity Lab_files/libraries.gif" class="body_img"><br><br>
+						<img src="./CMU Computational Creativity Lab_files/libraries_0.png" class="body_img"><br><br>
+						<img src="./CMU Computational Creativity Lab_files/libraries_1.png" class="body_img"><br><br>
+					</div>
+<!--
+					<div id="work2">
+						<div class="title">Social AR for CMU Commencement 2021</div>
+						<hr>
+						<div class="des">
+							<br>
+							<div>
+							Spring 2021 | 6 Weeks<br>
+							<br>
+							In Collaboration with<br>
+							<a href="https://www.cmu.edu/marcom/" target="_blank">CMU Communications & Marketing</a><br>
+							<br>
+							Published in <br>
+							<a href="https://www.plymouth.ac.uk/research/message-journal" target="_blank">Message Journal</a><br>
+							<br>
+							</div>
+							<br>
+						<span class="description">
+					
+						The events of 2020/21 have boosted the untact movement that digitally transforms the way people interact and operate. Despite the many efficient tools, it was still difficult to find ways to connect emotionally, and playfully in this time of isolation. Even on a momentous day, such as the University Commencement, students and their families and friends were subject to virtual celebrations. A group of designers in the Computational Creativity Lab at Carnegie Mellon University questioned: <i>Is there anything that we, designers, can do to ensure that the University Virtual Commencement 2021 is the best it could ever be, with focus on augmenting participation and joy?</i> The project yielded visual communication that is immersive, performative, and social. It offered tailored experiences in pleasant and unexpected ways, beyond the functional and transactional interactions that occur on many remote communication tools and platforms today.
+				
+							When COVID-19 forced us inside and apart, we relied upon digital ways to communicate and interact more than ever before. While these new modalities allowed us to keep in touch, they often lacked the emotional and playful side of human communication. When the 2021 Commencement at Carnegie Mellon was went virtual, a group of designers at the Computational Creativity Lab set out to make a set of digital tools that could capture this more emotional side of communication, including the collective joy, reflection, and achievement that graduation day can mean. The project yielded visual communication that is immersive, performative, and social. Beyond the functional and transactional interactions that occur on many remote communication tools and platforms today, this project created tailored experiences in pleasant and unexpected ways.
+						</span>
+						</div><br><br>
+						<img src="./img/Playgroup 2020-1.jpg" class="body_img"><br><br>
+						<img src="./img/Playgroup 2020-7.jpg" class="body_img"><br><br>
+					</div>
+-->
+					<div id="work2" style="display: block;">
+						<div class="title">Typefaces and Socioeconomic Patterns</div>
+						<hr>
+						<div class="des">
+							<br>
+							<div>
+							2017–19 <br>
+							<br>
+							In Collaboration with<br>
+							<a href="https://senseable.mit.edu/" target="_blank">MIT’s Senseable City Lab</a><br>
+							<br>
+							Published in <br>
+							<a href="https://www.nature.com/articles/s41598-019-52423-y" target="_blank">Nature Scientific Reports</a><br>
+							<br>
+							</div>
+							<br>
+						<span class="description">
+						Understanding the socioeconomic and demographic characteristics of an urban region is vital for policy-making, urban management, and urban planning. However, gathering socioeconomic and demographic data is difficult, often relying on costly and time consuming human-participant survey work. This project explored how the typefaces in public areas could be used to measure the socioeconomic characteristics of a neighborhood. Using a deep learning model trained to recognize type characteristics, this study analyzed 59,515 typefaces images from 748,471 Google Street View images to measure how type correlated with household income in each neighborhood. This work concluded that typeface can act as a metric to measure socio-economic characteristics.
+						</span>
+						</div><br><br>
+						<img src="./CMU Computational Creativity Lab_files/typeface_cropped.png" class="body_img"><br><br>
+						<img src="./CMU Computational Creativity Lab_files/type_analysis.png" class="body_img"> <br><br>
+						<img src="./CMU Computational Creativity Lab_files/type_amenity.png" class="body_img"> <br><br>
+					</div>
+					<div id="work3" style="display: none;">
+						<div class="title">What's Your Type?</div>
+						<hr>
+						<div class="des">
+							<br>
+							<div>
+							2018–2022 <br>
+							<br>
+							Funded by<br>
+							<a href="https://studioforcreativeinquiry.org/" target="_blank">The Frank-Ratchye STUDIO For Creative Inquiry</a> at Carnegie Mellon University<br>
+							<br>
+							</div>
+							<br>
+						<span class="description">
+							Open-source fonts are ubiquitous throughout the Web, and yet we understand very little about the implicit connotations and underlying perceptions that users have of them. Nor do we understand how these preferences vary across cultural barriers. What’s Your Type seeks to understand these font connotations and perceptions through a web-based survey. The survey asks users to pick the font that best matches an emotive adjective—including “playful,” “informative,” and “trendy.” By gathering user responses, What’s Your Type crowdsources a database of font preferences, searchable by language and location of the respondent.
+						</span>
+						</div><br><br>
+						<img src="./CMU Computational Creativity Lab_files/whatsyourtype_0_s.png" class="body_img"><br><br>
+						<img src="./CMU Computational Creativity Lab_files/whatsyourtype_1_s.png" class="body_img"><br><br>
+						<img src="./CMU Computational Creativity Lab_files/whatsyourtype_2_s.png" class="body_img"><br><br>
+						<img src="./CMU Computational Creativity Lab_files/whatsyourtype_3_s.png" class="body_img"><br><br>
+						<img src="./CMU Computational Creativity Lab_files/whatsyourtype_4_s.png" class="body_img"><br><br>
+						<img src="./CMU Computational Creativity Lab_files/whatsyourtype_5_s.png" class="body_img"><br><br>
+					</div>
+					<div id="work4" style="display: none;">
+						<div class="title">Dynamic Messaging through Speech</div>
+						<hr>
+						<div class="des">
+							<br>
+							<div>
+							Spring 2022 | 12 weeks <br>
+							<br>
+							In Collaboration with<br>
+							<a href="https://www.andrew.cmu.edu/user/swiener/lapp/" target="_blank">Language Acquisition, Processing, and Pedagogy Lab</a><br>
+							<br>
+							</div>
+							<br>
+						<span class="description">
+							description
+						</span>
+						</div><br><br>
+						<img src="./CMU Computational Creativity Lab_files/Playgroup 2020-1.jpg" class="body_img">
+						<img src="./CMU Computational Creativity Lab_files/Playgroup 2020-7.jpg" class="body_img"><br>
+					</div>
+					<div id="work5" style="display: none;">
+						<div class="title">AIGA Design Educators Survey</div>
+						<hr>
+						<div class="des">
+							<br>
+							<div>
+							Summer–Fall 2022 | 12 weeeks <br>
+							<br>
+							In Collaboration with <a href="https://educators.aiga.org/" target="_blank">AIGA Design Educators Community</a><br>
+							<a href="https://educators.aiga.org/" target="_blank">AIGA Deisgn Educators Survey</a><br>
+							<br>
+							</div>
+							<br>
+						<span class="description">
+							description
+						</span>
+						</div><br><br>
+						<img src="./CMU Computational Creativity Lab_files/Playgroup 2020-1.jpg" class="body_img">
+						<img src="./CMU Computational Creativity Lab_files/Playgroup 2020-7.jpg" class="body_img"><br>
+					</div>
+				</div>
+				
+				</div>
+
+				<div id="people" style="display: none;">
+					
+					The Computational Creativity Lab is directed by <a href="https://design.cmu.edu/people/faculty/kyuha-shim" target="_blank">Prof. Kyuha Shim at CMU Design</a>. The alumni of CCL are shaping the future of our world. We are always looking for students who would like to partake in creative design projects as research assistants or through independent study. <a href="mailto:computational.creativity.lab@gmail.com" class="link">Say Hello~!</a> 👋<br><br>
+					-<br>
+					<div class="names">
+						<span class="heavyl">Current Members<br></span>
+						Youngryun Cho (MDes 2023) <br>
+						Yuran Ding (BS 2022) <br>
+						Adam Grant (BCSA 2023) <br>
+						Anupriya Gupta (MDes 2023) <br>
+						Jina Lee (BDes 2022) <br>
+						Ju won Lee (MDes 2023) <br>
+						Yeonjin Park (MDes 2023) <br>
+						Mia Tang (BCSA 2022) <br>
+						<br><br><br><br><br>
+						<span class="heavyl">Alumni<br></span>
+						Zahin Ali, IDEO <br>
+						Zach Bachiri, IBM <br>
+						Eva Cen, Google <br>
+						Jonah Conlin, Doblin <br>
+						Scott Dombkowski, Zenda Consulting <br>
+						Alice Fang, The New York Times <br>
+						Mathew Guo, Twitch <br>
+						Joe Hines, Google <br>
+						Taery Kim, Ph.D., Zenda Consulting <br>
+						Cathryn Ploehn, UT Austin <br>
+						Tammy Tarng, The New York Times <br>
+						Shengzhi Wu, Google <br>
+						Joseph Zhang, Skiff <br>
+						
+					</div>
+					<span><br><br><br><br></span>
+				</div>
+				
+				<div id="contact" style="display: none;">
+					<img src="./CMU Computational Creativity Lab_files/mmch.jpg" id="contact_img" style="transform: rotateY(-2.35156deg) rotateX(-10.4222deg); transition: all 0s ease 0s; opacity: 0;">
+<!--
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXZpb3BvcnRvbGFubyIsImEiOiJja212cmRrd2QwN3dzMnZuMXV2d25xbWsxIn0.x3y36v9arY9wmBOCZlCXUA#15/37.771/-122.436';
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [-74.5, 40], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+    });
+-->
+					<br><br>
+					-<br>
+				    <div class="large" style="column-count: 3; column-gap: 10px;">
+				    	Carnegie Mellon University<br>Computational Creativity Lab
+				    	<br><br><br>
+						5000 Forbes Avenue <br>
+						Margaret Morrison Carnegie Hall, 204A <br>
+						Pittsburgh PA 15203 <br><br>
+						<a href="mailto:computational.creativity.lab@gmail.com" class="sel">computational.creativity.lab@gmail.com</a><br>
+						+1 412.268.4917<br><br>
+					</div>
+					<div class="medium" style="column-count: 2; column-gap: 10px;">
+					    CMU Computational Creativity Lab<br>
+						<a href="mailto:computational.creativity.lab@gmail.com" class="sel">computational.creativity.lab@gmail.com</a><br>
+						+1 412.268.4917<br><br>
+						5000 Forbes Avenue <br>
+						Margaret Morrison Carnegie Hall, 204A<br>
+						Pittsburgh PA 15203 <br><br>
+					</div>
+					<div class="small" style="column-count: 1;">
+					    CMU CCL<br>
+						5000 Forbes Avenue <br>
+						Margaret Morrison Carnegie Hall, 204A<br>
+						Pittsburgh PA 15203 <br>
+						<a href="mailto:computational.creativity.lab@gmail.com" class="sel">computational.creativity.lab@gmail.com</a><br>
+						+1 412.268.4917<br>
+					</div>
+				</div>
+	</div>
+
+	<div class="foot">
+		© 2022 Computational Creativity Lab
+	</div>
+
+
+</body></html>

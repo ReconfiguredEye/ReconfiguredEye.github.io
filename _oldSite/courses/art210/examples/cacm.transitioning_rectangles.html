@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>colby jennings | ART 210 home</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/starter-template/">
+    
+
+<link href="../../../css/bootstrap.css" rel="stylesheet">
+<link href="../../../css/blog.css" rel="stylesheet">
+<link href="../../../css/bootstrap.yeti.css" rel="stylesheet">
+<link href="../../../css/myCustom.css" rel="stylesheet">
+
+
+
+
+<body>
+<div class="canvascontainer">
+
+<div class=" col-lg-10 mx-auto p-4 py-md-5">
+  <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+    <a href="../../../index.html" class="d-flex align-items-center text-body-emphasis text-decoration-none">
+      <h4>colby jennings</h4>
+    </a>
+  </header>
+
+  <main>
+
+    <div class="row g-5">
+      <div class="col-md-8">
+        <h3><a href="../art210.html">ART 210</a> | creative coding - resources + reference</h3>
+        <hr>
+      </br>
+      <article>
+        <h5>Transitioning Rectangles</h5>
+    </br>
+        <md-block>
+            ##### Prompt
+
+            Recall that any visual property can be linked to a loop variable, not just position. Use iteration to generate a series of rectangles. Your code should simultaneously control several of the rectangles' visual properties, including their position, height, and fill color.
+
+            ##### Example #1
+
+            Here's a simple p5.js sketch that generates a series of rectangles, controlling their position, height, and fill color using a loop variable:
+
+```javascript
+function setup() {
+  createCanvas(800, 800);
+  background(200);
+  noLoop();
+}
+
+function draw() {
+  let numberOfRectangles = 10;
+  let margin = width / 10; // 10% margin on each side
+  let availableWidth = width - 2 * margin;
+  let rectangleSpacing = availableWidth / numberOfRectangles;
+  
+  for(let i = 0; i < numberOfRectangles; i++) {
+    let rectangleX = margin + i * rectangleSpacing;
+    let rectangleY = height / 2;
+    let rectangleHeight = map(i, 0, numberOfRectangles - 1, 50, height / 2);
+    
+    // Fill color is a gradient from red to blue
+    let fillColor = color(map(i, 0, numberOfRectangles - 1, 255, 0), 0, map(i, 0, numberOfRectangles - 1, 0, 255));
+    fill(fillColor);
+    noStroke();
+    
+    rect(rectangleX, rectangleY, rectangleSpacing, rectangleHeight);
+  }
+}
+```
+
+This code creates a canvas and draws a series of rectangles across the width of the canvas. It uses the loop's counting variable (`i`) to calculate the `x` position of each rectangle, as well as the rectangle's height and fill color. The `map()` function is used to create a gradient effect for the height and color of the rectangles: as `i` increases, the rectangle height increases and the color transitions from red to blue. The `rect()` function is then used to draw each rectangle.
+
+---
+
+##### Example #2
+
+We can center the composition and move it from the canvas edge by adjusting the `rectangleY` and `rectangleHeight` calculations to ensure the rectangles are centered in the canvas and do not touch the edges. Here's how:
+
+```javascript
+function setup() {
+  createCanvas(800, 800);
+  background(200);
+  noLoop();
+}
+
+function draw() {
+  let numberOfRectangles = 10;
+  let margin = width / 10; // 10% margin on each side
+  let availableWidth = width - 2 * margin;
+  let rectangleSpacing = availableWidth / numberOfRectangles;
+  
+  for(let i = 0; i < numberOfRectangles; i++) {
+    let rectangleX = margin + i * rectangleSpacing;
+    let rectangleHeight = map(i, 0, numberOfRectangles - 1, 50, height / 2);
+    
+    // Adjust rectangleY to center the rectangles vertically
+    let rectangleY = (height - rectangleHeight) / 2;
+    
+    // Fill color is a gradient from red to blue
+    let fillColor = color(map(i, 0, numberOfRectangles - 1, 255, 0), 0, map(i, 0, numberOfRectangles - 1, 0, 255));
+    fill(fillColor);
+    noStroke();
+    
+    rect(rectangleX, rectangleY, rectangleSpacing, rectangleHeight);
+  }
+}
+```
+
+In this updated version, `rectangleY` is calculated as half the difference between the canvas height and the rectangle height. This positions the rectangle vertically in the center of the canvas. Note that this calculation is done inside the loop so that each rectangle's `y` position is adjusted according to its specific height.
+
+---
+
+##### Example #3
+
+This is a representation of what is pictured for this prompt in the book
+
+```javascript
+function setup() {
+  createCanvas(800, 800);
+  noSmooth();
+}
+
+function draw() {
+  background(253);
+  strokeWeight(2);
+
+  //sets the number of rectangles being drawn
+  var nRectangles = 14;
+  for (var i = 0; i < nRectangles; i++){
+    //finds the x and y value of current rectangle
+    var x0 = 50 + i*50;
+    var y0 = height-50;
+
+    //rectangle height increases by 25
+    var rectH = (i+1)*50;
+    //creates a color gradient by making color dependent on i
+    fill(i*(255.0/nRectangles));
+    //draws the rectangle
+    rect(x0,y0,50,-rectH);
+  }
+}
+```
+
+        </md-block>
+      </br>
+      <hr>
+      </article>
+       
+       
+      </div>
+
+      <div class="col-md-4">
+        <h4>art 210 | quick list</h4>
+        <p>Convenient links that you'll use often.</p>
+        <ul class="list-unstyled ps-0">
+          <li>
+            <a href="../art210.syllabus.html">Syllabus</a>
+          </li>
+          <li>
+            <a href="../art210.schedule.html">Schedule</a>
+          </li>
+          <li>
+            <a href="../art210.resources.html">Resources + Reference</a>
+          </li>
+          <li>
+            <a href="https://p5js.org/" target="_blank" rel="noopener noreferrer">P5.js</a>
+          </li>
+          <li>
+            <a href="https://openprocessing.org/" target="_blank" rel="noopener noreferrer">Openprocessing.org</a>
+          </li>
+          <li>
+            <a href="https://processing.org/" target="_blank" rel="noopener noreferrer">Processing</a>
+          </li>
+          <li>
+            <a href="http://paperjs.org/examples/" target="_blank" rel="noopener noreferrer">Paper.js</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer class="border-top">
+    <a href="https://media.giphy.com/media/VowM9lLlmH2lW/giphy.gif" target="_blank" rel="noopener noreferrer">Wu-Tang is for the Children.</a>
+  </footer>
+</div>
+<script src="../../../js/bootstrap.bundle.min.js"></script>
+<script type="module" src="https://md-block.verou.me/md-block.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js"></script>
+<script src="../../../js/10print.js"></script>
+</div>
+    </body>
+
+</html>

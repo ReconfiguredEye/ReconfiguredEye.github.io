@@ -1,88 +1,163 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src="../assets/js/color-modes.js"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>colby jennings | home page</title>
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>colby jennings | on the web</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/starter-template/">
+
+
     
 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/blog.css" rel="stylesheet">
-<link href="css/bootstrap.yeti.css" rel="stylesheet">
-<link href="css/myCustom.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-<body>
+    <link rel="stylesheet" href="css/main.css">
 
+    <link rel="stylesheet" href="https://use.typekit.net/wbv1pwa.css">
+
+    <style>
+        body {
+          background-color: #eaeaea;
+          height: 200vh;
+          position: relative;
+          overflow-x: hidden;
+          margin: 0;
+          padding: 0;
+        }
+        body .grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none; /* This should remain none */
+  z-index: 300;
+  transform: translateZ(0);
+}
+
+body .grain:before {
+  content: "";
+  top: -10rem;
+  left: -10rem;
+  width: calc(100% + 20rem);
+  height: calc(100% + 20rem);
+  z-index: 9999;
+  position: fixed;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
+  opacity: 0.12;
+  pointer-events: none; /* This should also remain none */
+  -webkit-animation: noise 1s steps(2) infinite;
+  animation: noise 1s steps(2) infinite;
+}
+
+a {
+  z-index: 1000; /* Ensure links have a higher z-index than the grain */
+  position: relative; /* Make sure the z-index applies */
+}
+        @-webkit-keyframes noise {
+          to {
+            transform: translate3d(-7rem, 0, 0);
+          }
+        }
+        @keyframes noise {
+          0% {
+            transform: translate3d(0, 9rem, 0);
+          }
+          10% {
+            transform: translate3d(-1rem, -4rem, 0);
+          }
+          20% {
+            transform: translate3d(-8rem, 2rem, 0);
+          }
+          30% {
+            transform: translate3d(9rem, -9rem, 0);
+          }
+          40% {
+            transform: translate3d(-2rem, 7rem, 0);
+          }
+          50% {
+            transform: translate3d(-9rem, -4rem, 0);
+          }
+          60% {
+            transform: translate3d(2rem, 6rem, 0);
+          }
+          70% {
+            transform: translate3d(7rem, -8rem, 0);
+          }
+          80% {
+            transform: translate3d(-9rem, 1rem, 0);
+          }
+          90% {
+            transform: translate3d(6rem, -5rem, 0);
+          }
+          to {
+            transform: translate3d(-7rem, 0, 0);
+          }
+        }
+        body h1, body h2 {
+          margin: 75px auto;
+          padding: 0;
+          width: 95vw;
+        }
+        body h2 {
+          margin: 50px auto;
+          padding: 0;
+          width: 95vw;
+     
+        }
+        body .image {
+          position: fixed;
+          top: 0;
+          right: 0;
+          height: 100vh;
+          width: 50vw;
+          background-image: url(https://images.unsplash.com/photo-1598382570113-48c8e44737b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3648&q=80);
+          background-size: cover;
+          background-position: center;
+          filter: grayscale(100%);
+          opacity: 0.2;
+          z-index: -500;
+        }
+        </style>
+    
+  </head>
+  <body>
+<div class="grain"></div>
 
 <div class="col-lg-10 mx-auto p-4 py-md-5">
-  <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-    <a href="index.html" class="d-flex align-items-center text-body-emphasis text-decoration-none">
-      <h4>colby jennings</h4>
-    </a>
+  <header class="d-flex align-items-center">
+  
+        <h1><a href="https://reconfiguredeye.github.io">colby jennings</a></h1>
+      
   </header>
-
   <main>
 
-    <div class="row g-5">
+    <div class="row">
       <div class="col-md-6">
-        <h4  >Projects</h4>
-        <ul class="list-unstyled ps-0">
-          <li>
-            <a href="#">
-              Project Link
-            </a>
-          </li>
-        </ul>
+        <a href ="portfolio/portfolioIndex.html"><h2>.research</h2></a>
+        <a href="portfolio/portfolioIndex.html"><img src="portfolio/images/tv_006.png" width="450px"></a> 
+  
+        
       </div>
 
       <div class="col-md-6">
-        <h4  >Teaching</h4>
-        <p>Click this <a href="teaching.html">link</a> for a list of my courses and other teaching resources. Select the corresponding link to your course.</p>
-        <ul class="list-unstyled ps-0">
-          <li>
-            <a href="courses/art210/art210.html">
-              ART 210
-            </a>
-          </li>
-          <li>
-            <a href="courses/art300/art300.html">
-              ART 300
-            </a>
-          </li>
-          <li>
-            <a href="courses/art310/art310.html">
-              ART 310
-            </a>
-          </li>
-          <li>
-            <a href="courses/art311/art311.html">
-              ART 311
-            </a>
-          </li>
-          <li>
-            <a href="courses/art340/art340.html">
-              ART 340
-            </a>
-          </li>
-          <li>
-            <a href="courses/art410/art410.html">
-              ART 410
-            </a>
-          </li>
-        </ul>
+        <a href ="classroom/classroomIndex.html"><h2>.classroom</h2></a>
+        <a href="classroom/classroomIndex.html"><img src="portfolio/images/tv_005.png" width="450px"></a>
+        
       </div>
     </div>
   </main>
-  <footer class="border-top">
-    It's bigger than <a href="https://www.youtube.com/watch?v=oiusDE0KND8">hip-hop</a>
+  <footer class="pt-5 my-5 text-body-secondary">
+    <p>font sourced from Adobe Fonts</p>
   </footer>
 </div>
 <script src="js/bootstrap.bundle.min.js"></script>
-<script type="module" src="https://md-block.verou.me/md-block.js"></script>
 
     </body>
-
 </html>

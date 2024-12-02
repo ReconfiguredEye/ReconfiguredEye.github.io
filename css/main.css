@@ -1,0 +1,193 @@
+/* Fonts */
+
+
+.logicScriptRegular {
+    font-family: "logic-monoscript", mono;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.logicScriptBold {
+    font-family: "logic-monoscript", mono;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.logicMonoRegular {
+    font-family: "logic-monospace", mono;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.logicMonoItalic {
+    font-family: "logic-monospace", mono;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.logicMonoBold {
+    font-family: "logic-monospace", mono;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.logicMonoBoldItalic {
+    font-family: "logic-monospace", mono;
+    font-weight: 700;
+    font-style: italic;
+}
+
+
+h1, h2, h3 {
+    font-family: "logic-monospace", mono;
+    font-weight: 700; 
+    font-style: normal;
+}
+
+h4, h5, h6 {
+    font-family: "logic-monospace", mono;
+    font-weight: 500;
+    font-style: italic;
+}
+
+body {
+    font-family: "logic-monospace", mono;
+    --dot-bg: #efefef;
+    --dot-color: #adadad;
+    --dot-size: 1px;
+    --dot-space: 30px;
+	background:
+		linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		var(--dot-color);
+}
+
+body {
+    background-color: #eaeaea;
+    height: 200vh;
+    position: relative;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+body .grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none; /* This should remain none */
+    z-index: 300;
+    transform: translateZ(0);
+}
+
+body .grain:before {
+    content: "";
+    top: -10rem;
+    left: -10rem;
+    width: calc(100% + 20rem);
+    height: calc(100% + 20rem);
+    z-index: 9999;
+    position: fixed;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
+    opacity: 0.12;
+    pointer-events: none; /* This should also remain none */
+    -webkit-animation: noise 1s steps(2) infinite;
+    animation: noise 1s steps(2) infinite;
+}
+
+a {
+    z-index: 1000; /* Ensure links have a higher z-index than the grain */
+    position: relative; /* Make sure the z-index applies */
+    text-decoration: none;
+}
+  @-webkit-keyframes noise {
+    to {
+      transform: translate3d(-7rem, 0, 0);
+    }
+  }
+  @keyframes noise {
+    0% {
+      transform: translate3d(0, 9rem, 0);
+    }
+    10% {
+      transform: translate3d(-1rem, -4rem, 0);
+    }
+    20% {
+      transform: translate3d(-8rem, 2rem, 0);
+    }
+    30% {
+      transform: translate3d(9rem, -9rem, 0);
+    }
+    40% {
+      transform: translate3d(-2rem, 7rem, 0);
+    }
+    50% {
+      transform: translate3d(-9rem, -4rem, 0);
+    }
+    60% {
+      transform: translate3d(2rem, 6rem, 0);
+    }
+    70% {
+      transform: translate3d(7rem, -8rem, 0);
+    }
+    80% {
+      transform: translate3d(-9rem, 1rem, 0);
+    }
+    90% {
+      transform: translate3d(6rem, -5rem, 0);
+    }
+    to {
+      transform: translate3d(-7rem, 0, 0);
+    }
+  }
+  body h1, body h2 {
+    margin: 75px auto;
+    padding: 0;
+    width: 95vw;
+  }
+  body h2 {
+    margin: 50px auto;
+    padding: 0;
+    width: 95vw;
+
+  }
+  body .image {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 50vw;
+    background-image: url(https://images.unsplash.com/photo-1598382570113-48c8e44737b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3648&q=80);
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%);
+    opacity: 0.2;
+    z-index: -500;
+  }
+
+footer p {
+    font-size: .75em;
+}
+
+
+/* Grain Background */
+
+h1 {
+    font-size: 1.5em;
+    line-height: 1em;
+    color: #232323;
+}
+
+h1 a {
+    font-weight: 300;
+    color: #232323;
+    text-decoration: none;
+}
+
+h2 {
+    color: #232323;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1em;
+}

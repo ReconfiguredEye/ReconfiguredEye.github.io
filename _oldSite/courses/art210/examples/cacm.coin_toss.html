@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>colby jennings | ART 210 home</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/starter-template/">
+    
+
+<link href="../../../css/bootstrap.css" rel="stylesheet">
+<link href="../../../css/blog.css" rel="stylesheet">
+<link href="../../../css/bootstrap.yeti.css" rel="stylesheet">
+<link href="../../../css/myCustom.css" rel="stylesheet">
+
+
+
+
+<body>
+<div class="canvascontainer">
+
+<div class=" col-lg-10 mx-auto p-4 py-md-5">
+  <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+    <a href="../../../index.html" class="d-flex align-items-center text-body-emphasis text-decoration-none">
+      <h4>colby jennings</h4>
+    </a>
+  </header>
+
+  <main>
+
+    <div class="row g-5">
+      <div class="col-md-8">
+        <h3><a href="../art210.html">ART 210</a> | creative coding - resources + reference</h3>
+        <hr>
+      </br>
+      <article>
+        <h5>Coin Toss</h5>
+    </br>
+        <md-block>
+
+            ##### Prompt
+
+            Create a sketch for a coin that is "tossed" every time the mouse button is clicked.  Your coin should be evenly weighted so that heads and tails have the same likelihood of appearing.  Test your program over ten tosses.  What were the observed frequencies of heads and tails?
+
+            ##### Quick Example
+
+            Here is a simple p5.js sketch where a circle represents a coin. If you click the mouse, it randomly displays "Heads" or "Tails" in the circle, representing the result of a coin toss:
+
+```javascript
+let coinFace;
+
+function setup() {
+  createCanvas(400, 400);
+  textAlign(CENTER, CENTER);
+  textSize(20);
+  coinFace = '';
+}
+
+function draw() {
+  background(220);
+  
+  // Draw the coin
+  ellipse(width / 2, height / 2, 100, 100);
+
+  // Display the result of the coin toss
+  text(coinFace, width / 2, height / 2);
+}
+
+function mousePressed() {
+  // When the mouse is pressed, randomly choose between heads and tails
+  coinFace = random() < 0.5 ? 'Heads' : 'Tails';
+}
+```
+In this script, `coinFace` stores the result of the coin toss. `setup()` initializes `coinFace` and sets up the canvas and text properties, and `draw()` draws the coin and displays the result of the coin toss in the center of the coin. `mousePressed()` is a built-in p5.js function that is called whenever the mouse is pressed; it updates `coinFace` to randomly choose between "Heads" and "Tails".
+
+---
+
+
+##### Additional Example
+
+To create an animation that simulates the coin flip, we can use a variable to control the rotation of the coin, and increment that variable over time to create a rotation effect. We can also use a variable to keep track of whether the coin is currently flipping, and only start a new flip if the previous one has finished.
+
+Here's an example of how you might do this:
+
+```javascript
+let rotation = 0; // Current rotation of the coin
+let isFlipping = false; // Whether the coin is currently flipping
+let flipDirection = 1; // Direction of the flip (1 for heads, -1 for tails)
+let coinFace = '';
+
+function setup() {
+  createCanvas(400, 400);
+  textAlign(CENTER, CENTER);
+  textSize(20);
+  frameRate(60); // Set the frame rate
+}
+
+function draw() {
+  background(220);
+  
+  // Draw the coin
+  push(); // Save the current transformation matrix
+  translate(width / 2, height / 2); // Move to the center of the canvas
+  rotate(rotation); // Rotate by the current rotation angle
+  ellipse(0, 0, 100, 100);
+  
+  // Display the result of the coin toss
+  text(coinFace, 0, 0);
+  pop(); // Restore the transformation matrix
+  
+  // If the coin is flipping, increment the rotation angle
+  if (isFlipping) {
+    rotation += flipDirection * PI / 30; // Adjust the speed of the flip as needed
+
+    // If the flip has finished, stop flipping and choose a result
+    if (abs(rotation) >= PI) {
+      isFlipping = false;
+      rotation = 0;
+      coinFace = flipDirection === 1 ? 'Heads' : 'Tails';
+    }
+  }
+}
+
+function mousePressed() {
+  // When the mouse is pressed, if the coin is not currently flipping, start a new flip
+  if (!isFlipping) {
+    isFlipping = true;
+    flipDirection = random() < 0.5 ? 1 : -1;
+  }
+}
+```
+
+In this script, `rotation` controls the rotation of the coin, `isFlipping` indicates whether the coin is currently flipping, and `flipDirection` controls the direction of the flip. `setup()` initializes these variables and sets up the canvas and text properties. `draw()` draws and rotates the coin if it is flipping, and stops the flip and chooses a result if the flip has finished. `mousePressed()` starts a new flip if the previous one has finished, and chooses a direction for the flip randomly.
+
+You can adjust the parameters as needed, such as the size and position of the coin, the font size, and the speed of the flip. You can also add more features, such as an image of a coin and different images or text for the heads and tails sides.
+
+---
+
+##### 3D Example
+
+To give the appearance of a 3D flip, we could use p5.js's WEBGL rendering mode, which allows us to use 3D shapes and transformations. A cylinder can be used to represent the coin and it can be rotated around the X-axis to simulate the flip. Here's an example:
+
+```javascript
+let angle = 0; // Current rotation of the coin
+let isFlipping = false; // Whether the coin is currently flipping
+let coinFace = ''; // The result of the coin toss
+
+function setup() {
+  createCanvas(400, 400, WEBGL); // Use WEBGL mode
+  textAlign(CENTER, CENTER);
+  textSize(50);
+  frameRate(60); // Set the frame rate
+}
+
+function draw() {
+  background(220);
+  rotateX(HALF_PI); // Rotate the coin so that it's flat
+
+  if (isFlipping) {
+    // If the coin is flipping, increment the rotation angle
+    angle += PI / 30; // Adjust the speed of the flip as needed
+
+    // If the flip has finished, stop flipping and choose a result
+    if (angle >= PI) {
+      isFlipping = false;
+      angle = 0;
+      coinFace = random() < 0.5 ? 'Heads' : 'Tails';
+    }
+  }
+
+  // Rotate the coin by the current rotation angle
+  rotateX(angle);
+
+  // Draw the coin
+  cylinder(100, 2);
+
+  // Display the result of the coin toss
+  rotateX(-angle); // Undo the coin's rotation
+  text(coinFace, 0, -10); // Draw the text slightly above the coin
+}
+
+function mousePressed() {
+  // When the mouse is pressed, if the coin is not currently flipping, start a new flip
+  if (!isFlipping) {
+    isFlipping = true;
+  }
+}
+```
+
+In this script, `setup()` sets up the canvas and text properties, and `draw()` draws and rotates the coin if it is flipping, and stops the flip and chooses a result if the flip has finished. `mousePressed()` starts a new flip if the previous one has finished. 
+
+Note: the use of a 3D object complicates the issue of differentiating between the sides of the coin.  A work around would be to combine the animation effects of this example with the functionality of the first sketch, which does technically achieve the results of the prompt, but misses the "spirit" of the prompt, which asks for a "coin flip".  
+        </md-block>
+      </br>
+      <hr>
+      </article>
+       
+       
+      </div>
+
+      <div class="col-md-4">
+        <h4>art 210 | quick list</h4>
+        <p>Convenient links that you'll use often.</p>
+        <ul class="list-unstyled ps-0">
+          <li>
+            <a href="../art210.syllabus.html">Syllabus</a>
+          </li>
+          <li>
+            <a href="../art210.schedule.html">Schedule</a>
+          </li>
+          <li>
+            <a href="../art210.resources.html">Resources + Reference</a>
+          </li>
+          <li>
+            <a href="https://p5js.org/" target="_blank" rel="noopener noreferrer">P5.js</a>
+          </li>
+          <li>
+            <a href="https://openprocessing.org/" target="_blank" rel="noopener noreferrer">Openprocessing.org</a>
+          </li>
+          <li>
+            <a href="https://processing.org/" target="_blank" rel="noopener noreferrer">Processing</a>
+          </li>
+          <li>
+            <a href="http://paperjs.org/examples/" target="_blank" rel="noopener noreferrer">Paper.js</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer class="border-top">
+    <a href="https://media.giphy.com/media/VowM9lLlmH2lW/giphy.gif" target="_blank" rel="noopener noreferrer">Wu-Tang is for the Children.</a>
+  </footer>
+</div>
+<script src="../../../js/bootstrap.bundle.min.js"></script>
+<script type="module" src="https://md-block.verou.me/md-block.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js"></script>
+<script src="../../../js/10print.js"></script>
+</div>
+    </body>
+
+</html>

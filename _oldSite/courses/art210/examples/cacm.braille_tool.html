@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>colby jennings | ART 210 home</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/starter-template/">
+    
+
+<link href="../../../css/bootstrap.css" rel="stylesheet">
+<link href="../../../css/blog.css" rel="stylesheet">
+<link href="../../../css/bootstrap.yeti.css" rel="stylesheet">
+<link href="../../../css/myCustom.css" rel="stylesheet">
+
+
+
+
+<body>
+<div class="canvascontainer">
+
+<div class=" col-lg-10 mx-auto p-4 py-md-5">
+  <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+    <a href="../../../index.html" class="d-flex align-items-center text-body-emphasis text-decoration-none">
+      <h4>colby jennings</h4>
+    </a>
+  </header>
+
+  <main>
+
+    <div class="row g-5">
+      <div class="col-md-8">
+        <h3><a href="../art210.html">ART 210</a> | creative coding - resources + reference</h3>
+        <hr>
+      </br>
+      <article>
+        <h5>Braille Tool</h5>
+    </br>
+        <md-block>
+          ##### Prompt
+
+            Reproduce the Braille alphabet using filled and unfilled circles.  Store a representation of these patterns in an array, and create a tool that allows a user to compose, and print the Braille messages.
+          
+          
+          ##### Example:
+
+          The Braille alphabet is represented using 2x3 grids of dots, so you could create a 2D array for each letter where each element represents a dot (1 for a raised dot, 0 for a flat one). To keep it simple, this example only includes the letters A to I and space.
+
+```javascript
+let brailleAlphabet = {
+  'a': [[1, 0], [0, 0], [0, 0]],
+  'b': [[1, 0], [1, 0], [0, 0]],
+  'c': [[1, 1], [0, 0], [0, 0]],
+  'd': [[1, 1], [0, 1], [0, 0]],
+  'e': [[1, 0], [0, 1], [0, 0]],
+  'f': [[1, 1], [1, 0], [0, 0]],
+  'g': [[1, 1], [1, 1], [0, 0]],
+  'h': [[1, 0], [1, 1], [0, 0]],
+  'i': [[0, 1], [1, 0], [0, 0]],
+  ' ': [[0, 0], [0, 0], [0, 0]],
+};
+
+let message = 'abc';
+
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+  textSize(30);
+}
+
+function draw() {
+  background(220);
+  text('Input: ' + message, 20, 30);
+  text('Braille:', 20, 60);
+  for (let i = 0; i < message.length; i++) {
+    let letter = brailleAlphabet[message[i]];
+    for (let j = 0; j < 3; j++) {
+      for (let k = 0; k < 2; k++) {
+        if (letter[j][k] === 1) {
+          fill(0);
+        } else {
+          fill(255);
+        }
+        ellipse(20 + 60 * i + 20 * k, 70 + 20 * j, 15, 15);
+      }
+    }
+  }
+}
+
+function keyTyped() {
+  if (key === ' ') {
+    message += key;
+  } else if (key === 'backspace') {
+    message = message.substring(0, message.length - 1);
+  } else if (key in brailleAlphabet) {
+    message += key;
+  }
+}
+```
+
+In this code, `brailleAlphabet` is an object that stores the 2D array representation of each letter. The `draw()` function draws the Braille representation of the message string. The `keyTyped()` function updates the message string when a key is typed. 
+
+You can expand the `brailleAlphabet` object to include the rest of the letters and special characters as needed. 
+
+         </md-block>
+      </br>
+      </article>
+       
+       
+      </div>
+
+      <div class="col-md-4">
+        <h4>art 210 | quick list</h4>
+        <p>Convenient links that you'll use often.</p>
+        <ul class="list-unstyled ps-0">
+          <li>
+            <a href="../art210.syllabus.html">Syllabus</a>
+          </li>
+          <li>
+            <a href="../art210.schedule.html">Schedule</a>
+          </li>
+          <li>
+            <a href="../art210.resources.html">Resources + Reference</a>
+          </li>
+          <li>
+            <a href="https://p5js.org/" target="_blank" rel="noopener noreferrer">P5.js</a>
+          </li>
+          <li>
+            <a href="https://openprocessing.org/" target="_blank" rel="noopener noreferrer">Openprocessing.org</a>
+          </li>
+          <li>
+            <a href="https://processing.org/" target="_blank" rel="noopener noreferrer">Processing</a>
+          </li>
+          <li>
+            <a href="http://paperjs.org/examples/" target="_blank" rel="noopener noreferrer">Paper.js</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer class="border-top">
+    <a href="https://media.giphy.com/media/VowM9lLlmH2lW/giphy.gif" target="_blank" rel="noopener noreferrer">Wu-Tang is for the Children.</a>
+  </footer>
+</div>
+<script src="../../../js/bootstrap.bundle.min.js"></script>
+<script type="module" src="https://md-block.verou.me/md-block.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js"></script>
+<script src="../../../js/10print.js"></script>
+</div>
+    </body>
+
+</html>
