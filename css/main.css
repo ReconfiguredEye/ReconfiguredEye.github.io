@@ -97,7 +97,6 @@ body .grain:before {
 }
 
 a {
-    z-index: 1000; /* Ensure links have a higher z-index than the grain */
     position: relative; /* Make sure the z-index applies */
     text-decoration: none;
 }
@@ -242,4 +241,63 @@ header h1 {
   background-color: #fdfdfd; /* Light background */
   box-shadow: 5px 5px 0px black; /* Custom shadow */
 }
+
+header h1 {
+  min-width: 350px;
+}
+
+header a {
+  text-decoration: none;
+  width: 75px;
+  color:#232323;
+}
+
+body main h1 {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+body main h2 {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+main a:hover {
+  z-index: 1000;
+}
+
+
+/* RESEARCH Styles*/
+
+.row .col-md-4 {
+  margin-bottom: 2em;
+}
+
+.row .col-md-4 img {
+  min-width: 275px;
+  max-width: 275px;
+}
+
+.row .col-md-6 img {
+  min-width: 400px;
+  max-width: 400px;
+}
+
+main#research h2, main#classroom h2 {
+  font-size: 1.2em;
+  font-style:italic;
+  font-stretch:condensed;
+  font-weight:bold;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #333;
+  margin-bottom: .8em;
+}
+
+main#research p, main#classroom p {
+  font-stretch:condensed;
+  font-size: 1em;
+}
+
+
+/* CLASSROOM Styles */
 
