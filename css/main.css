@@ -270,6 +270,21 @@ main a:hover {
   z-index: 1000;
 }
 
+main iframe {
+  /*position: relative;*/
+  z-index: 1000;
+}
+
+main img {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.imageCaption {
+  color: #777;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
 
 /* RESEARCH Styles*/
 
