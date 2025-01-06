@@ -48,7 +48,6 @@ pointer-events: none; /* This should also remain none */
 animation: noise 1s steps(2) infinite;
 }
 a {
-z-index: 1000; /* Ensure links have a higher z-index than the grain */
 position: relative; /* Make sure the z-index applies */
 }
       @-webkit-keyframes noise {
@@ -154,10 +153,10 @@ position: relative; /* Make sure the z-index applies */
 
 <div class="col-lg-10 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center justify-content-between">
-    <h1><a href="https://reconfiguredeye.github.io">colby jennings</a></h1>
+    <h1><a href="../index.html">colby jennings</a></h1>
     <h2>
-      <h2><a href="../portfolio/portfolioIndex.html">.portfolio</a></h2>
-      <h2><a href="classroomIndex.html">.classroom</a></h2>
+      <h2><a href="../researchIndex.html">.research</a></h2>
+      <h2><a href="../classroomIndex.html">.classroom</a></h2>
     </h2>
     <button class="btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
       info
@@ -186,39 +185,81 @@ position: relative; /* Make sure the z-index applies */
       </div>
     </div>
   </div>
-  <main>
-  <div class="row">
-    <h1>student work</h1>
-   <!-- Sections -->
-<div class="section col-lg-10">
-    <h2>interactive | creative coding</h2>
-    <br>
-    <p>introduction text...</p>
+  <main id="classroom">
     <div class="row">
-        <div class="col-md-6">image 1</div>
-        <div class="col-md-6">image 2</div>
+       <!-- Sections -->
+       <div class="section col-lg-10">
+        <h2>
+          interactive
+        </h2>
+        <p>An exploration of layered meaning and temporal shifts through abstract visuals and multimedia.</p>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_001.png" alt="Project view 1" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_002.png" alt="Project view 2" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_003.png" alt="Project view 2" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_004.png" alt="Project view 1" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_005.png" alt="Project view 2" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_006.png" alt="Project view 2" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_004.png" alt="Project view 1" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_005.png" alt="Project view 2" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_006.png" alt="Project view 2" class="img-fluid rounded">
+          </div>
+        </div>
+      </div>
+      <div class="section col-lg-10">
+        <h2>
+          time-based
+        </h2>
+        <p>An exploration of layered meaning and temporal shifts through abstract visuals and multimedia.</p>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_007.png" alt="Project view 1" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_008.png" alt="Project view 2" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_009.png" alt="Project view 2" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_010.png" alt="Project view 1" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_011.png" alt="Project view 2" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_012.png" alt="Project view 2" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_001.png" alt="Project view 1" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_002.png" alt="Project view 2" class="img-fluid rounded">
+          </div>
+          <div class="col-md-4">
+            <img src="../portfolio/images/tv_003.png" alt="Project view 2" class="img-fluid rounded">
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="section col-lg-10">
-    <h2>time-based | video/animation</h2>
-    <br>
-    <p>introduction text...</p>
-    <div class="row">
-        <div class="col-md-6">image 1</div>
-        <div class="col-md-6">image 2</div>
-    </div>
-  </div>
-  <div class="section col-lg-10">
-    <h2>experimental</h2>
-    <br>
-    <p>introduction text...</p>
-    <div class="row">
-        <div class="col-md-6">image 1</div>
-        <div class="col-md-6">image 2</div>
-    </div>
-  </div>
-</div>
-</main>
+  </main>
   <footer class="pt-5 my-5 text-body-secondary">
     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#creditsModal">
       thanks to...
@@ -239,7 +280,6 @@ position: relative; /* Make sure the z-index applies */
       <div class="modal-body" style="font-family: 'Courier New', monospace; font-size: 16px; color: #333;">
         <ul style="list-style-type: square; margin-left: 20px;">
           <li>Font sourced from <a href="https://fonts.adobe.com/" target="_blank" style="color: #0000EE; text-decoration: underline;">adobe fonts</a></li>
-          <li>Background image by <a href="https://unsplash.com/" target="_blank" style="color: #0000EE; text-decoration: underline;">unsplash</a></li>
           <li>Icons and other resources sourced from Bootstrap and open-source libraries.</li>
         </ul>
       </div>

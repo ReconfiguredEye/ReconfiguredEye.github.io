@@ -273,7 +273,7 @@ main a:hover {
 
 /* RESEARCH Styles*/
 
-.row .col-md-4 {
+.row .col-md-4, .row .col-md-6, .row .col-6, .row .col-lg-2, .row .sol-sm-6 {
   margin-bottom: 2em;
 }
 
