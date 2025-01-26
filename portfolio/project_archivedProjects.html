@@ -150,6 +150,10 @@ a {
 <div class="col-lg-10 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center justify-content-between">
     <h1><a href="../index.html">colby jennings</a></h1>
+    <h4>
+      <button id="startButton">(feed.play)</button>
+        <button id="stopButton" style="display:none;">(feed.stop)</button>
+    </h4>
     <h2>
       <h2><a href="../researchIndex.html">.research</a></h2>
       <h2><a href="../classroomIndex.html">.classroom</a></h2>
@@ -290,12 +294,8 @@ a {
           <br>
           <p>project description</p>
           <div class="row">
-              <div class="col-md-6">image 1</div>
-              <div class="col-md-6">image 2</div>
-              <div class="col-md-6">image 3</div>
-              <div class="col-md-6">image 4</div>
               <div class="col-lg-10">
-                <p>some text about the project. blah blah blah</p>
+                <iframe width="700" height="400" src="https://www.youtube.com/embed/hrg3Dh2lWcE?si=rF1exAblf_CWMUyo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
           </div>
         </div>  
@@ -347,6 +347,7 @@ a {
         <ul style="list-style-type: square; margin-left: 20px;">
           <li>Font sourced from <a href="https://fonts.adobe.com/" target="_blank" style="color: #0000EE; text-decoration: underline;">adobe fonts</a></li>
           <li>Icons and other resources sourced from Bootstrap and open-source libraries.</li>
+          <li>audio streams via <a href="https://www.liveatc.net/">liveatc</a></li>
         </ul>
       </div>
       <div class="modal-footer" style="background-color: #f4f4f4;">
@@ -359,6 +360,7 @@ a {
 </div>
 
 <script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
 
     </body>
 </html>

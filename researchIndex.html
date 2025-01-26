@@ -147,10 +147,15 @@ a {
 <div class="col-lg-10 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center justify-content-between">
     <h1><a href="index.html">colby jennings</a></h1>
+    <h4>
+      <button id="startButton">(feed.play)</button>
+        <button id="stopButton" style="display:none;">(feed.stop)</button>
+    </h4>
     <h2>
       <h2><a href="researchIndex.html">.research</a></h2>
       <h2><a href="classroomIndex.html">.classroom</a></h2>
     </h2>
+    
     <button class="btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
       info
     </button>
@@ -183,10 +188,10 @@ a {
          <!-- Sections -->
          <div class="section col-lg-10">
           <h2>
-            palimpsest (working title)
+            data.drawing
           </h2>
           <hr/>
-          <p>project description</p>
+          <p>a series of works imagin(in)g data</p>
           <div class="row">
             <div class="col-6 col-sm-6 col-md-6 col-lg-4">
               <img src="/portfolio/images/tv_002.png" alt="Project view 1" class="img-fluid rounded">
@@ -204,7 +209,7 @@ a {
             you, by the sea...
           </h2>
           <hr/>
-          <p>project description</p>
+          <p>interactive virtual environment responding to neurological activity via EEG data streams
           <div class="row">
             <div class="col-6 col-sm-6 col-md-6 col-lg-4">
               <img src="/portfolio/images/tv_001.png" alt="Project view 1" class="img-fluid rounded">
@@ -222,13 +227,25 @@ a {
             found negatives
           </h2>
           <hr/>
-          <p>project description</p>
+          <p>juxtaposing found negatives with found negatives</p>
           <div class="row">
             <div class="col-6 col-sm-6 col-md-4 col-lg-2">
-              <img src="/portfolio/images/tv_005.png" alt="Project view 1" class="img-fluid rounded">
+              <a href="portfolio/project_foundNegatives.html"><img src="/portfolio/images/forWeb_fN_negative03.jpg" alt="Project detail 1" class="img-fluid rounded"></a>
             </div>
             <div class="col-6 col-sm-6 col-md-4 col-lg-2">
-              <img src="/portfolio/images/tv_006.png" alt="Project view 2" class="img-fluid rounded">
+              <a href="portfolio/project_foundNegatives.html"><img src="/portfolio/images/forWeb_fN_text01.jpg" alt="Project detail 2" class="img-fluid rounded"></a>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-2">
+              <a href="portfolio/project_foundNegatives.html"><img src="/portfolio/images/forWeb_fN_negative04.jpg" alt="Project detail 3" class="img-fluid rounded"></a>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-2">
+              <a href="portfolio/project_foundNegatives.html"><img src="/portfolio/images/forWeb_fN_text02.jpg" alt="Project detail 4" class="img-fluid rounded"></a>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-2">
+              <a href="portfolio/project_foundNegatives.html"><img src="/portfolio/images/forWeb_fN_negative01.jpg" alt="Project detail 5" class="img-fluid rounded"></a>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-2">
+              <a href="portfolio/project_foundNegatives.html"><img src="/portfolio/images/forWeb_fN_text04.jpg" alt="Project detail 6" class="img-fluid rounded"></a>
             </div>
           </div>
         </div>
@@ -237,7 +254,7 @@ a {
             not your savior
           </h2>
           <hr/>
-          <p>project description</p>
+          <p>not your savio 1.0 (2.0 update coming soon)</p>
           <div id="savior" class="row">
             <div class="col-6 col-sm-6 col-md-4 col-lg-4">
               <a href="portfolio/project_notYourSavior.html"><img src="/portfolio/images/forWeb_NotYourSavior_OG_03.jpg" alt="Project view 1" class="img-fluid rounded"></a>
@@ -258,7 +275,7 @@ a {
             arcadia
           </h2>
           <hr/>
-          <p>project description</p>
+          <p>passaic, mo (after The Monuments of Passaic, by Robert Smithson)</p>
           <div class="row">
             <div class="col-6 col-sm-6 col-md-4 col-lg-4">
               <a href="portfolio/project_arcadia.html"><img src="/portfolio/images/forWeb_passaic_01.jpg" alt="Project view 1" class="img-fluid rounded"></a>
@@ -379,6 +396,7 @@ a {
         <ul style="list-style-type: square; margin-left: 20px;">
           <li>Font sourced from <a href="https://fonts.adobe.com/" target="_blank" style="color: #0000EE; text-decoration: underline;">adobe fonts</a></li>
           <li>Icons and other resources sourced from Bootstrap and open-source libraries.</li>
+          <li>audio streams via <a href="https://www.liveatc.net/">liveatc</a></li>
         </ul>
       </div>
       <div class="modal-footer" style="background-color: #f4f4f4;">
@@ -390,7 +408,8 @@ a {
   </div>
 </div>
 
-<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
 
     </body>
 </html>

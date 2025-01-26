@@ -116,6 +116,7 @@ a {
 <div class="col-lg-10 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center justify-content-between">
     <h1><a href="index.html">colby jennings</a></h1>
+    
     <p>website under construction!</p>
     <button class="btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
       info
@@ -148,17 +149,33 @@ a {
 
   <main>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
         <a href ="researchIndex.html"><h2>.research</h2></a>
-        <a href="researchIndex.html"><img src="assets/squareWork.gif" width="450px"></a> 
+        <a href="researchIndex.html"><!-- Video Element -->
+          <video autoplay muted loop playsinline>
+              <source src="assets/squareRender_02.mp4" type="video/mp4" width="600">
+              Your browser does not support the video tag.
+          </video></a> 
   
         
       </div>
 
-      <div class="col-md-6">
+      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
         <a href ="classroomIndex.html"><h2>.classroom</h2></a>
-        <a href="classroomIndex.html"><img src="portfolio/images/tv_005.png" width="450px"></a>
+        <a href="classroomIndex.html"><video autoplay muted loop playsinline>
+          <source src="assets/squareRender_01.mp4" type="video/mp4" width="600">
+          Your browser does not support the video tag.
+      </video></a>
         
+      </div>
+      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+      
+        <button id="startButton">feed.play</button>
+        <button id="stopButton" style="display:none;">feed.stop</button>
+
+      </div>
+      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+        <a href="https://www.kbcs.fm/programs/protest-tunes/" target="_blank">protest tunes</a>
       </div>
     </div>
   </main>
@@ -183,6 +200,7 @@ a {
         <ul style="list-style-type: square; margin-left: 16px;">
           <li>Font sourced from <a href="https://fonts.adobe.com/" target="_blank" style="color: #0000EE; text-decoration: underline;">adobe fonts</a></li>
           <li>Icons and other resources sourced from Bootstrap and open-source libraries.</li>
+          <li>audio streams via <a href="https://www.liveatc.net/">liveatc</a></li>
         </ul>
       </div>
       <div class="modal-footer" style="background-color: #f4f4f4;">
@@ -195,6 +213,7 @@ a {
 </div>
 
 <script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
 
     </body>
 </html>
