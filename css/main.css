@@ -353,6 +353,21 @@ main a {
   max-height: 100%;
   object-fit: cover;
 }
+
+iframe {
+  margin-bottom: 20px;
+}
+
+figure {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+figcaption {
+  font-size: .8em;
+  font-style:oblique;
+  margin-bottom: 25px;
+}
 /* CLASSROOM Styles */
 
 /*update for git*/
