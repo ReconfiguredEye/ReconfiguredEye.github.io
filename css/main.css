@@ -39,24 +39,24 @@
 
 
 h1, h2, h3 {
-    font-family: "logic-monospace", mono;
-    font-weight: 700; 
+  font-family: "letter-gothic-std", monospace;
+  font-weight: 700; 
     font-style: normal;
 }
 
 h4, h5, h6 {
-    font-family: "logic-monospace", mono;
+  font-family: "letter-gothic-std", monospace;
     font-weight: 500;
     font-style: italic;
 }
 
 body {
-    font-family: "logic-monospace", mono;
+  font-family: "letter-gothic-std", monospace;   
     --dot-bg: #efefef;
     --dot-color: #adadad;
     --dot-size: 1px;
     --dot-space: 30px;
-	background:
+    background:
 		linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
 		linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
 		var(--dot-color);
