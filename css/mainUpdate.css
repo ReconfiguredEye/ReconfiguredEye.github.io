@@ -1,0 +1,329 @@
+/* Fonts */
+
+/* Consolidate logic script font declarations */
+.logicScriptRegular,
+.logicScriptBold {
+  font-family: "logic-monoscript", mono;
+}
+.logicScriptRegular {
+  font-weight: 400;
+  font-style: normal;
+}
+.logicScriptBold {
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Consolidate logic monospace font declarations */
+.logicMonoRegular,
+.logicMonoItalic,
+.logicMonoBold,
+.logicMonoBoldItalic {
+  font-family: "logic-monospace", mono;
+}
+.logicMonoRegular {
+  font-weight: 400;
+  font-style: normal;
+}
+.logicMonoItalic {
+  font-weight: 400;
+  font-style: italic;
+}
+.logicMonoBold {
+  font-weight: 700;
+  font-style: normal;
+}
+.logicMonoBoldItalic {
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: "letter-gothic-std", monospace;
+  font-weight: 700; 
+  font-style: normal;
+}
+h4, h5, h6 {
+  font-family: "letter-gothic-std", monospace;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Body styles (merged declarations) */
+body {
+  font-family: "letter-gothic-std", monospace;
+  --dot-bg: #efefef;
+  --dot-color: #adadad;
+  --dot-size: 1px;
+  --dot-space: 30px;
+  background: 
+    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
+  background-color: #eaeaea;
+  height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Grain Background */
+body .grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  z-index: 300;
+  transform: translateZ(0);
+}
+body .grain:before {
+  content: "";
+  top: -10rem;
+  left: -10rem;
+  width: calc(100% + 20rem);
+  height: calc(100% + 20rem);
+  z-index: 9999;
+  position: fixed;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
+  opacity: 0.12;
+  pointer-events: none;
+  -webkit-animation: noise 1s steps(2) infinite;
+  animation: noise 1s steps(2) infinite;
+}
+
+/* Remove duplicate a rules by merging them */
+a {
+  position: relative;
+  text-decoration: none;
+}
+
+/* Keyframes */
+@-webkit-keyframes noise {
+  to { transform: translate3d(-7rem, 0, 0); }
+}
+@keyframes noise {
+  0% { transform: translate3d(0, 9rem, 0); }
+  10% { transform: translate3d(-1rem, -4rem, 0); }
+  20% { transform: translate3d(-8rem, 2rem, 0); }
+  30% { transform: translate3d(9rem, -9rem, 0); }
+  40% { transform: translate3d(-2rem, 7rem, 0); }
+  50% { transform: translate3d(-9rem, -4rem, 0); }
+  60% { transform: translate3d(2rem, 6rem, 0); }
+  70% { transform: translate3d(7rem, -8rem, 0); }
+  80% { transform: translate3d(-9rem, 1rem, 0); }
+  90% { transform: translate3d(6rem, -5rem, 0); }
+  to { transform: translate3d(-7rem, 0, 0); }
+}
+
+footer p {
+    font-size: .75em;
+}
+
+h1 {
+    font-size: 1em;
+    line-height: 1em;
+    color: #232323;
+}
+
+h1 a {
+    font-weight: 300;
+    color: #232323;
+    text-decoration: none;
+}
+
+h2 {
+    color: #232323;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1em;
+}
+
+#creditsModal .modal-content {
+  background-color: #fdfdfd;
+  box-shadow: 5px 5px 0px black;
+}
+
+#creditsModal .modal-header, 
+#creditsModal .modal-footer {
+  background-color: #f4f4f4;
+}
+
+#creditsModal .modal-title {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+#creditsModal .modal-body {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #333;
+}
+
+#creditsModal .modal-body a {
+  color: #0000EE;
+  text-decoration: underline;
+}
+
+#creditsModal .modal-footer .btn {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  background-color: #dcdcdc;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+header h1 {
+  font-size: 24px;
+}
+
+/* Remove Bootstrap's default styling on modals */
+.modal-content {
+  border: none; /* Remove Bootstrap's default border */
+  box-shadow: none; /* Remove default box shadow */
+}
+
+/* Custom styles for modal content */
+.modal-content {
+  border: 3px solid black; /* Your custom border */
+  background-color: #fdfdfd; /* Light background */
+  box-shadow: 5px 5px 0px black; /* Custom shadow */
+}
+
+header h1 {
+  min-width: 250px;
+}
+
+header a {
+  text-decoration: none;
+  width: 75px;
+  color:#232323;
+}
+
+body main h1 {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+body main h2 {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+main a:hover {
+  z-index: 1000;
+}
+
+main iframe {
+  /*position: relative;*/
+  z-index: 1000;
+}
+
+main img {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.imageCaption {
+  color: #777;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+
+/* RESEARCH Styles*/
+
+.row .col-md-4, .row .col-md-6, .row .col-6, .row .col-lg-2, .row .sol-sm-6 {
+  margin-bottom: 2em;
+}
+
+#research h2, #classroom h2 {
+  font-size: 1.2em;
+  font-style:italic;
+  font-stretch:condensed;
+  font-weight:bold;
+  padding-bottom: 5px;
+  margin-bottom: .8em;
+}
+
+#research p, #classroom p {
+  font-stretch:condensed;
+  font-size: 1em;
+}
+
+button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.btn {
+  margin-top: 0px;
+}
+
+button:hover {
+  color: #45a049;
+  text-decoration: none;
+}
+
+video {
+  max-width: 100%; /* Video will never exceed the width of its container */
+  max-height: 100%; /* Video will never exceed the height of its container */
+  width: auto; /* Adjust width dynamically */
+  height: auto; /* Adjust height dynamically */
+  border-radius: 10px; /* Optional: Rounded corners */
+}
+
+main a {
+  color:#333;
+}
+
+.diptych-holder {
+  height: 400px; /* Adjust as needed */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f4f4; /* Optional: background for better contrast */
+}
+.diptych-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+iframe {
+  margin-bottom: 20px;
+}
+
+figure {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+figcaption {
+  font-size: .8em;
+  font-style:oblique;
+  margin-bottom: 25px;
+}
+
+blockquote {
+  margin: 40px;
+  font-style:italic;
+}
+/* CLASSROOM Styles */
+
+/*update for git*/
