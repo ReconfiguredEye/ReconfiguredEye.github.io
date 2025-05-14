@@ -3,6 +3,7 @@
     color: #555 !important;
     font-weight: bold !important;
     font-size: 26px !important;
+    text-shadow: none;
   }
   
   #timeline-embed .tl-slide-content-container {
