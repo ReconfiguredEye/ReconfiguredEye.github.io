@@ -12,3 +12,7 @@ h2 {
 h3 {
     color: pink !important;
 }
+
+.tl-full-color-background {
+    color: #555 !important;
+}
