@@ -1,4 +1,14 @@
+@charset "UTF-8";
+
 h3.tl-headline-date {
     color:#555 !important;
     text-shadow: none !important;
+}
+
+h2 {
+    font-family: 'Courier New', Courier, monospace !important;
+}
+
+h3 {
+    color: pink !important;
 }
