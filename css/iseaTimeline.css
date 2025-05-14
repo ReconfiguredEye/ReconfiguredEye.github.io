@@ -1,29 +1,12 @@
-h3.tl-headline-date {
-    color:#555 !important;
-    text-shadow: none !important;
-}
-
-h2 {
-    font-family: 'Courier New', Courier, monospace !important;
-}
-
-h3 {
-    color: pink !important;
-}
-
-.tl-full-color-background {
-    color: #555 !important;
-}
 
 #timeline-embed .tl-slide .tl-text h3.tl-headline-date {
-    color: #e60073 !important;
+    color: #555 !important;
     font-weight: bold !important;
     font-size: 26px !important;
   }
   
   #timeline-embed .tl-slide-content-container {
     background-color: #fdf6e3 !important;
-    border: 4px solid #333 !important;
   }
   
   #timeline-embed .tl-title {
