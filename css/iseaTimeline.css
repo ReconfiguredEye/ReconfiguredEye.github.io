@@ -17,3 +17,7 @@
   .tl-slider-container-mask {
   background-color: #FFF8ED !important;
 }
+.tl-menubar-message-next {
+  color: #444 !important; /* or any readable color that fits your palette */
+  font-weight: 500;
+}
