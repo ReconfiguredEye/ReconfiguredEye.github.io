@@ -23,4 +23,5 @@
 }
 .tl-timenav {
   background-color: #FFF8ED !important;
+  border-top: none !important;
 }
