@@ -2,7 +2,8 @@
 #timeline-embed .tl-slide .tl-text h3.tl-headline-date {
     color: #555 !important;
     font-weight: bold !important;
-    font-size: 20px !important;
+    font-size: 2em !important;
+    line-height: 1em !important;
     text-shadow: none;
   }
   
@@ -38,8 +39,17 @@
 
 .tl-text h2.tl-headline {
   font-size: 2.5em !important;
+  line-height: 1em !important;
 }
 
 .tl-slidenav-content-container .tl-slidenav-title {
+  font-size: 1.25em !important;
+}
+
+.tl-text-content-container h3.tl-headline-date {
   font-size: 1.5em !important;
+}
+
+.tl-text-content p {
+  font-size: 1.25em !important;
 }
