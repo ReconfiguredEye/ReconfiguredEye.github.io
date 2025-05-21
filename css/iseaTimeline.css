@@ -36,6 +36,10 @@
   border-top: none !important;
 }
 
-.tl-headline {
-  font-size: 32px;
+.tl-text h2.tl-headline {
+  font-size: 2.5em !important;
+}
+
+.tl-slidenav-content-container .tl-slidenav-title {
+  font-size: 1.5em !important;
 }
