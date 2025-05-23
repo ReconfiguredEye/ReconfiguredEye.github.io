@@ -53,3 +53,13 @@
 .tl-text-content p {
   font-size: 1.25em !important;
 }
+
+.tl-timenav-event {
+  min-width: 60px !important;
+}
+
+.tl-timenav-event-dot {
+  width: 14px !important;
+  height: 14px !important;
+  background-color: #444 !important; /* optional: change dot color */
+}
