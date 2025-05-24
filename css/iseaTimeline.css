@@ -76,10 +76,21 @@
 }
 
 .tl-timeaxis-background {
-  background-color: none !important;
+  background-color: #FFF8ED !important;
   border-top: none !important;
 }
 .tl-timeaxis .tl-timeaxis-content-container .tl-timeaxis-major .tl-timeaxis-tick {
   height: 80px !important;
   margin-top: 10px;
+  font-size: 1.2em;
+  color: #222;
+}
+
+.tl-timeaxis {
+  height:60px;
+}
+
+.tl-timeaxis .tl-timeaxis-content-container .tl-timeaxis-minor .tl-timeaxis-tick .tl-timeaxis-tick-text {
+  font-size: 1.5em !important;  
+  color: #333;
 }
