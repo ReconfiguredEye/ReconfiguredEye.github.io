@@ -71,12 +71,15 @@
 
 .tl-timeaxis-tick span.tl-timeaxis-tick-text {
   height: 80px;
-  overflow: visible;
-  font-size: .8em;
-  margin-top: 18px;
+  overflow: visible !important;
+  font-size: 1.2em;
 }
 
 .tl-timeaxis-background {
   background-color: none !important;
   border-top: none !important;
+}
+.tl-timeaxis .tl-timeaxis-content-container .tl-timeaxis-major .tl-timeaxis-tick {
+  height: 80px !important;
+  margin-top: 10px;
 }
