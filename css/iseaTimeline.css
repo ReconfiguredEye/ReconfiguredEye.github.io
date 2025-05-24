@@ -99,3 +99,8 @@
   font-size: .8em;
   margin-top: 18px;
 }
+
+.tl-timeaxis-background {
+  background-color: none !important;
+  border-top: none !important;
+}
