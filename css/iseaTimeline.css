@@ -98,6 +98,9 @@
 .tl-storyslider {
   height: 690px !important;
   margin-top: -20px;
+  background-color: #FFF8ED !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .tl-timenav {
