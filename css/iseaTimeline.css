@@ -92,3 +92,10 @@
   padding-top: 6px !important;
   padding-bottom: 6px !important;
 }
+
+.tl-timeaxis-tick .tl-timeaxis-tick-text {
+  height: 80px;
+  overflow: visible;
+  font-size: .8em;
+  margin-top: 18px;
+}
