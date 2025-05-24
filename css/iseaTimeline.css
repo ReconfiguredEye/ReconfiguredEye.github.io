@@ -108,6 +108,9 @@
 }
 .tl-menubar-button {
   background-color: #FFF8ED;
+  color:#444 !important;
+  font-size: 22px;
+  line-height: 20px;
 }
 .tl-menubar {
   top: 700px !important;
