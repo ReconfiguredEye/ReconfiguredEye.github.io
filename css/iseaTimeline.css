@@ -68,32 +68,8 @@
   min-height: 10px !important;
 }
 
-.tl-timenav-event-dot {
-  width: 12px !important;
-  height: 12px !important;
-  background-color: #333 !important;
-}
-/* Change font size of time labels (e.g., years, months) */
-.tl-timenav-label {
-  font-size: 14px !important;
-  color: #333 !important; /* optional: make more visible */
-}
 
-/* Change font size of the currently viewed time range */
-.tl-timenav-time {
-  font-size: 16px !important;
-  font-weight: bold !important;
-  color: #222 !important;
-}
-.tl-timenav {
-  font-size: 14px !important;
-}
-.tl-timeaxis-content {
-  padding-top: 6px !important;
-  padding-bottom: 6px !important;
-}
-
-.tl-timeaxis-tick .tl-timeaxis-tick-text {
+.tl-timeaxis-tick span.tl-timeaxis-tick-text {
   height: 80px;
   overflow: visible;
   font-size: .8em;
