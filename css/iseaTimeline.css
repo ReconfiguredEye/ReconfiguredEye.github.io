@@ -96,9 +96,19 @@
 }
 
 .tl-storyslider {
-  height: 710px !important;
+  height: 730px !important;
+  margin-top: -20px;
 }
 
 .tl-timenav {
   height: 265px !important;
+}
+.tl-attribution {
+  display: none;
+}
+.tl-menubar-button {
+  background-color: #FFF8ED;
+}
+.tl-menubar {
+  top: 700px !important;
 }
